@@ -13,11 +13,5 @@ public class Recursion {
 	if (Math.abs(a * a - n) / n < 0.000000000001) return a;
 	return sqrtHelper((n / a + a) / 2, n);
     }
-
-    public static void main(String[] args) {
-	System.out.println(sqrt(100));
-	System.out.println(sqrt(400));
-	System.out.println(sqrt(90000));
-    }
     
 }
