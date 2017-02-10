@@ -1,6 +1,6 @@
 public class QueenBoard {
     
-    private int[][]board;
+    private int[][] board;
     private int solutionCount;
     
     public QueenBoard(int size){
@@ -36,6 +36,7 @@ public class QueenBoard {
      *all others are displayed as underscores '_'
      */
     public String toString() {
-    	return "";
+	String boardString = "";
+	return boardString;
     }
 }
