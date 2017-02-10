@@ -1,6 +1,0 @@
-QueenBoard
-	new b0ard with rows <size> and columns <size>
-
-solve
-	addQueen
-	
