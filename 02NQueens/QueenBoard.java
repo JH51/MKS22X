@@ -80,8 +80,8 @@ public class QueenBoard {
 		boardString += board[row][col] + " ";
 		/*
 		if (board[row][col] < 0) boardString += "Q ";
-		if (board[row][col] == 0) boardString += "_ ";
-		if (board[row][col] > 0) boardString += board[row][col] + " ";
+		if (board[row][col] >= 0) boardString += "_ ";
+		//if (board[row][col] > 0) boardString += board[row][col] + " ";
 		*/
 	    }
 	    boardString += "\n";
