@@ -23,6 +23,8 @@ public class QueenBoard {
     private boolean solveH(int row) {
 	if (row >= board.length) return true;
 	for (int col = 0; col < board.length; col += 1) {
+	    System.out.println(row + " " + col);
+	    System.out.println(this);
 	    if (board[row][col] == 0) {
 		addQueen(row, col);
 		return true && solveH(row + 1);
@@ -48,10 +50,10 @@ public class QueenBoard {
 	}
 	int r = row;
 	int c = col;
-	while (r > 0 && c > 0) board[r - 1][c - 1] += 1;
+	while (r > 0 && c > 0) board[r--][c--] += 1;
 	r = row;
 	c = col;
-	while (r < board.length && c < board.length) board[r + 1][c + 1] += 1;
+	while (r < board.length && c < board.length) board[r++][c++] += 1;
     }
 
     private void removeQueen(int row, int col) {
@@ -62,27 +64,22 @@ public class QueenBoard {
 	}
 	int r = row;
 	int c = col;
-	while (r > 0 && c > 0) board[ r - 1][c-1] -= 1;
+	while (r > 0 && c > 0) board[r--][c--] -= 1;
 	r = row;
 	c = col;
-	while (r < board.length && c < board.length) board[r + 1][c + 1] -= 1;
+	while (r < board.length && c < board.length) board[r++][c++] -= 1;
     }
 	
-    
-    /**toString
-     *and all nunbers that represent queens are replaced with 'Q' 
-     *all others are displayed as underscores '_'
-     */
     public String toString() {
 	String boardString = "";
 	for (int row = 0; row < board.length; row += 1) {
 	    for (int col = 0; col < board.length; col += 1) {
-		boardString += board[row][col] + " ";
-		/*
+		//boardString += board[row][col] + " ";
+		
 		if (board[row][col] < 0) boardString += "Q ";
 		if (board[row][col] >= 0) boardString += "_ ";
 		//if (board[row][col] > 0) boardString += board[row][col] + " ";
-		*/
+		
 	    }
 	    boardString += "\n";
 	}	
