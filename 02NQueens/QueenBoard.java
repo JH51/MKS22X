@@ -14,6 +14,7 @@ public class QueenBoard {
     }
 
     private boolean solveH(int row) {
+	if (board.length <= 3) return false;
 	if (row >= board.length) return true;
 	for (int col = 0; col < board.length; col += 1) {
 	    //System.out.println(row + " " + col);
@@ -30,7 +31,7 @@ public class QueenBoard {
 
     public int getSolutionCount() {
 	while (solve()) solutionCount += 1;
-    	return -1;
+    	return (solutionCount > 0) ? solutionCount : -1;
     }
 
     private void addQueen(int row, int col) {
@@ -113,7 +114,7 @@ public class QueenBoard {
     }
     
     public static void main(String[] args) {
-	QueenBoard a = new QueenBoard(25);
+	QueenBoard a = new QueenBoard(3);
         a.addQueen(2, 2);
 	a.removeQueen(2);
 	System.out.println(a.solve());
