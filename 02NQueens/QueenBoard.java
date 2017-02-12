@@ -32,7 +32,12 @@ public class QueenBoard {
     }
 
     public int getSolutionCount() {
-	while (solve()) solutionCount += 1;
+	for (int i = 0; i < board.length; i += 1) {
+	    //System.out.println(i);
+	    if (solveH(i)) solutionCount += 1;
+	    for (int j = 0; j < board.length; j += 1) removeQueen(j);
+	    board[i][0] = 1;
+	}
     	return (solutionCount > 0) ? solutionCount : -1;
     }
 
@@ -114,14 +119,16 @@ public class QueenBoard {
 	}	
 	return boardString;
     }
-    
+
+    /*
     public static void main(String[] args) {
-	QueenBoard a = new QueenBoard(14);
+	QueenBoard a = new QueenBoard(9);
         a.addQueen(2, 2);
 	a.removeQueen(2);
-	System.out.println(a.solve());
+	//System.out.println(a.solve());
 	//System.out.println(a.toString());
-	//System.out.println(a.getSolutionCount());
+	System.out.println(a.getSolutionCount());
     }
+    */
     
 }
