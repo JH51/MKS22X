@@ -17,7 +17,9 @@ public class QueenBoard {
      *all n queens. Uses solveH
      */
     public boolean solve() {
-	return solveH(0);
+	if (solveH(0)) return true;
+	for (int i = 0; i < board.length; i += 1) removeQueen(i);
+	return false;
     }
 
     private boolean solveH(int row) {
@@ -27,11 +29,11 @@ public class QueenBoard {
 	    System.out.println(this);
 	    if (board[row][col] == 0) {
 		addQueen(row, col);
-		return true && solveH(row + 1);
+		if (solveH(row + 1)) return true;
+		else removeQueen(row);
 	    }
-	    //removeQueen(row);
-	    //solveH(row + 1);
 	}
+	removeQueen(row - 1);
 	return false;
     }
 
@@ -80,16 +82,22 @@ public class QueenBoard {
     private void removeQueen(int row) {
 	for (int col = 0; col < board.length; col += 1) {
 	    if (board[row][col] < 0) {
-		for (int i = 0; i < board.length; i += 1) {
+	        for (int i = 0; i < board.length; i += 1) {
 		    board[row][i] -= 1;
 		    board[i][col] -= 1;
 		}
 		int r = row;
 		int c = col;
-		while (r > 0 && c > 0) board[r--][c--] -= 1;
+		while (r >= 0 && c >= 0) board[r--][c--] -= 1;
+		r = row;
+		c = col;
+		while (r >= 0 && c < board.length) board[r--][c++] -= 1;
 		r = row;
 		c = col;
 		while (r < board.length && c < board.length) board[r++][c++] -= 1;
+		r = row;
+		c = col;
+		while (r < board.length && c >= 0) board[r++][c--] -= 1;
 		board[row][col] = 0;
 	    }
 	}
@@ -118,9 +126,10 @@ public class QueenBoard {
     
     public static void main(String[] args) {
 	QueenBoard a = new QueenBoard(7);
-        //a.addQueen(2, 2);
+        a.addQueen(2, 2);
+	a.removeQueen(2);
 	System.out.println(a.solve());
-	System.out.println(a);
+	System.out.println(a.toString());
     }
     
 }
