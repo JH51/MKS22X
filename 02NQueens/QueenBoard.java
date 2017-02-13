@@ -133,6 +133,7 @@ public class QueenBoard {
 	return boardString;
     }
 
+    /*
     public static void main(String[] args) {
 	QueenBoard a = new QueenBoard(10);
         a.addQueen(2, 2);
@@ -141,5 +142,6 @@ public class QueenBoard {
 	//System.out.println(a.solve());
 	//System.out.println(a.toString());
     }
+    */
     
 }
