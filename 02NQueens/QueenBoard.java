@@ -46,26 +46,18 @@ public class QueenBoard {
 
     public boolean getSolutionCountH(int row) {
 	if (board.length <= 3) return false;
-	if (row >= board.length) return true;
+	if (row >= board.length) return true;;
 	for (int col = 0; col < board.length; col += 1) {
 	    if (board[row][col] == 0) {
 		addQueen(row, col);
 		if (getSolutionCountH(row + 1)) {
 		    solutionCount += 1;
 		    removeQueen(row);
-		    board[row][col] = 1;
-		    col += 1;
-		    return true;
+		    //board[row][col] = 1;
+		    //col += 1;
+		    return false;
 		}
-		else {
-		    removeQueen(row);
-		}	      
-	    }
-	}
-	//removeQueen(row - 1);
-	for (int i = 0; i < board.length; i += 1) {
-	    for (int j = 0; j < board.length; j += 1) {
-		board[i][j] = 0;
+		else removeQueen(row);
 	    }
 	}
 	return false;
@@ -152,7 +144,7 @@ public class QueenBoard {
     }
 
     public static void main(String[] args) {
-	QueenBoard a = new QueenBoard(7);
+	QueenBoard a = new QueenBoard(10);
         a.addQueen(2, 2);
 	a.removeQueen(2);
 	System.out.println(a.getSolutionCount());
