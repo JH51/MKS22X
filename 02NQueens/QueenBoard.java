@@ -37,7 +37,7 @@ public class QueenBoard {
     }
 
     public boolean getSolutionCountH(int row) {
-	if (board.length <= 3) return false;
+	if (board.length <= 3 && board.length != 1) return false;
 	if (row >= board.length) return true;;
 	for (int col = 0; col < board.length; col += 1) {
 	    if (board[row][col] == 0) {
