@@ -32,14 +32,45 @@ public class QueenBoard {
     }
 
     public int getSolutionCount() {
+	getSolutionCountH(0);
+	/*
 	for (int i = 0; i < board.length; i += 1) {
 	    //System.out.println(i);
 	    if (solveH(i)) solutionCount += 1;
 	    for (int j = 0; j < board.length; j += 1) removeQueen(j);
 	    board[i][0] = 1;
 	}
+	*/
     	return (solutionCount > 0) ? solutionCount : -1;
     }
+
+    public boolean getSolutionCountH(int row) {
+	if (board.length <= 3) return false;
+	if (row >= board.length) return true;
+	for (int col = 0; col < board.length; col += 1) {
+	    if (board[row][col] == 0) {
+		addQueen(row, col);
+		if (getSolutionCountH(row + 1)) {
+		    solutionCount += 1;
+		    removeQueen(row);
+		    board[row][col] = 1;
+		    col += 1;
+		    return true;
+		}
+		else {
+		    removeQueen(row);
+		}	      
+	    }
+	}
+	//removeQueen(row - 1);
+	for (int i = 0; i < board.length; i += 1) {
+	    for (int j = 0; j < board.length; j += 1) {
+		board[i][j] = 0;
+	    }
+	}
+	return false;
+    }
+
 
     private void addQueen(int row, int col) {
 	for (int i = 0; i < board.length; i += 1) {
@@ -120,15 +151,13 @@ public class QueenBoard {
 	return boardString;
     }
 
-    /*
     public static void main(String[] args) {
-	QueenBoard a = new QueenBoard(9);
+	QueenBoard a = new QueenBoard(7);
         a.addQueen(2, 2);
 	a.removeQueen(2);
+	System.out.println(a.getSolutionCount());
 	//System.out.println(a.solve());
 	//System.out.println(a.toString());
-	System.out.println(a.getSolutionCount());
     }
-    */
     
 }
