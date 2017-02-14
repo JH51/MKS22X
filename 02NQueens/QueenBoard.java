@@ -138,13 +138,13 @@ public class QueenBoard {
 	return boardString;
     }
 
-    
+    /*
     public static void main(String[] args) {
 	QueenBoard a = new QueenBoard(12);
 	//System.out.println(a.getSolutionCount());
 	System.out.println(a.solve());
 	//System.out.println(a.toString());
     }
-    
+    */
     
 }
