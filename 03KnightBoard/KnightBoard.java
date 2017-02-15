@@ -29,85 +29,69 @@ public class KnightBoard {
 	try {
 	    if (solveH(row - 2, col - 1, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row - 2][col - 1] = level;
-		return true;}
+		    board[row - 2][col - 1] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row - 2, col + 1, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row - 2][col + 1] = level;
-	    	return true;}
+		    board[row - 2][col + 1] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row + 2, col - 1, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row + 2][col - 1] = level;
-	    	return true;}
+		    board[row + 2][col - 1] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row + 2, col + 1, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row + 2][col + 1] = level;
-		return true;}
+		    board[row + 2][col + 1] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row - 1, col - 2, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row - 1][col - 2] = level;
-	    	return true;}
+		    board[row - 1][col - 2] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row + 1, col - 2, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row + 1][col - 2] = level;
-	    	return true;}
+		    board[row + 1][col - 2] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row - 1, col + 2, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row - 1][col + 2] = level;
-	    	return true;}
+		    board[row - 1][col + 2] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;
-	}
+	catch (IndexOutOfBoundsException e) {OoB = true;}
 	try {
 	    if (solveH(row + 1, col + 2, level + 1)) {
 		if (board[row][col] == 0) {
-		board[row + 1][col + 2] = level;
-		return true;}
+		    board[row + 1][col + 2] = level;
+		    return true;}
 	    }
 	}
-	catch (IndexOutOfBoundsException e) {
-	    OoB = true;;
-	}
-	if (OoB) return false;
-	return false;
+	catch (IndexOutOfBoundsException e) {OoB = true;}
+	return ! OoB;
+	//return false;
     }
 
     /*
