@@ -19,11 +19,13 @@ public class KnightBoard {
     }
     
     public void solve() {
-	solveH(0, 0, 1);
+	System.out.println(solveH(3, 3, 1));
     }
     
     private boolean solveH(int row, int col, int level) {
-	if (level == board.length * board[row].length + 1) return true;
+	System.out.println(level + "\n" + this);
+	boolean OoB = false;
+	if (level == board.length * board[row].length) return true;
 	try {
 	    if (solveH(row - 2, col - 1, level + 1)) {
 		board[row - 2][col - 1] = level;
@@ -31,76 +33,84 @@ public class KnightBoard {
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;	    
 	}
 	try {
 	    if (solveH(row - 2, col + 1, level + 1)) {
-		board[row + 2][col + 1] = level;
-	    	return true;
+		if (board[row][col] == 0) {
+		board[row - 2][col + 1] = level;
+	    	return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row + 2, col - 1, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row + 2][col - 1] = level;
-	    	return true;
+	    	return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row + 2, col + 1, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row + 2][col + 1] = level;
-		return true;
+		return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row - 1, col - 2, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row - 1][col - 2] = level;
-	    	return true;
+	    	return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row + 1, col - 2, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row + 1][col - 2] = level;
-	    	return true;
+	    	return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row - 1, col + 2, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row - 1][col + 2] = level;
-	    	return true;
+	    	return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;
 	}
 	try {
 	    if (solveH(row + 1, col + 2, level + 1)) {
+		if (board[row][col] == 0) {
 		board[row + 1][col + 2] = level;
-		return true;
+		return true;}
 	    }
 	}
 	catch (IndexOutOfBoundsException e) {
-	    return false;
+	    OoB = true;;
 	}
+	if (OoB) return false;
 	return false;
     }
 
     public static void main(String[] args) {
-	KnightBoard a = new KnightBoard(7, 6);
+	KnightBoard a = new KnightBoard(7, 7);
 	//System.out.println(a.solveH(3,3,1));
 	a.solve();
 	System.out.println(a);
