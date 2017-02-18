@@ -32,14 +32,6 @@ public class KnightBoard {
 	}
 	catch (IndexOutOfBoundsException e) { return false; }
 	if (level >= board.length * board[row].length) return true;
-
-	boolean s = false;
-	for (int i = 0; i < 8; i += 8) {
-	    if (solveH(row + dRow[i], col + dCol[i], level + 1)) s = true;
-	}
-	if (s) return true;
-	
-	/*
 	int i = 0;
 	if (solveH(row + dRow[i + 0], col + dCol[i + 0], level + 1) ||
 	    solveH(row + dRow[i + 1], col + dCol[i + 1], level + 1) ||
@@ -50,8 +42,6 @@ public class KnightBoard {
 	    solveH(row + dRow[i + 6], col + dCol[i + 6], level + 1) ||
 	    solveH(row + dRow[i + 7], col + dCol[i + 7], level+ 1))
 	    return true;
-	*/
-
 	for (int r = 0; r < board.length; r += 1) {
 	    for (int c = 0; c < board[r].length; c += 1) {
 		if (board[r][c] == level) board[r][c] = 0;	    
@@ -71,7 +61,7 @@ public class KnightBoard {
     }
 
     public static void main(String[] args) {
-	KnightBoard a = new KnightBoard(5,7);
+	KnightBoard a = new KnightBoard(7, 7);
 	//System.out.println(a.solveH(3,3,1));
 	a.solve();
 	System.out.println(a);
