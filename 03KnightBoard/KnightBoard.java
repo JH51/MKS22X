@@ -26,28 +26,52 @@ public class KnightBoard {
     }
     
     private boolean solveH(int row, int col, int level) {
-	boolean solved = false;
-	System.out.println(level + " " + board.length * board[row].length + "\n" + row + " " + col + "\n" + this);
-	if (level > board.length * board[row].length) return true;
-	try {
-	    if (board[row][col] == 0) board[row][col] = level;
+        try {
+	    if (board[row][col] == 0) board[row][col] = level;	    
 	    else return false;
-	    for (int i = 0; i < 8; i += 1) {
-		if (solveH(row + dRow[i], col + dCol[i], level + 1)) solved = true;
-	    }
-	    if (solved) return solved;
-	    for (int r = 0; r < board.length; r += 1) {
-		for (int c = 0; c < board[row].length; c += 1) {
-		    if (board[r][c] >= level) board[r][c] = 0;
-		}
-	    }
 	}
 	catch (IndexOutOfBoundsException e) { return false; }
+	if (level >= board.length * board[row].length) return true;
+
+	boolean s = false;
+	for (int i = 0; i < 8; i += 8) {
+	    if (solveH(row + dRow[i], col + dCol[i], level + 1)) s = true;
+	}
+	if (s) return true;
+	
+	/*
+	int i = 0;
+	if (solveH(row + dRow[i + 0], col + dCol[i + 0], level + 1) ||
+	    solveH(row + dRow[i + 1], col + dCol[i + 1], level + 1) ||
+	    solveH(row + dRow[i + 2], col + dCol[i + 2], level + 1) ||
+	    solveH(row + dRow[i + 3], col + dCol[i + 3], level + 1) ||
+	    solveH(row + dRow[i + 4], col + dCol[i + 4], level + 1) ||
+	    solveH(row + dRow[i + 5], col + dCol[i + 5], level + 1) ||
+	    solveH(row + dRow[i + 6], col + dCol[i + 6], level + 1) ||
+	    solveH(row + dRow[i + 7], col + dCol[i + 7], level+ 1))
+	    return true;
+	*/
+
+	for (int r = 0; r < board.length; r += 1) {
+	    for (int c = 0; c < board[r].length; c += 1) {
+		if (board[r][c] == level) board[r][c] = 0;	    
+	    }
+	}
 	return false;
     }
 
+    public void clearGreater(int level){
+	for(int row = 0; row < board.length; row++){
+	    for(int col = 0; col < board[0].length;col++){
+		if(board[row][col] == level){
+		    board[row][col] = 0;
+		}
+	    }
+	}
+    }
+
     public static void main(String[] args) {
-	KnightBoard a = new KnightBoard(7,7);
+	KnightBoard a = new KnightBoard(5,7);
 	//System.out.println(a.solveH(3,3,1));
 	a.solve();
 	System.out.println(a);
