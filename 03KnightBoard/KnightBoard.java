@@ -22,10 +22,15 @@ public class KnightBoard {
     }
     
     public void solve() {
-	System.out.println(solveH(0, 0, 1));
+	solveH(0, 0, 1);
     }
     
     private boolean solveH(int row, int col, int level) {
+	/*
+	System.out.print("\033[H\033[2J");
+	System.out.flush();
+	System.out.println(this + "\n");
+	*/
         try {
 	    if (board[row][col] == 0) board[row][col] = level;	    
 	    else return false;
@@ -51,7 +56,7 @@ public class KnightBoard {
     }
 
     public static void main(String[] args) {
-	KnightBoard a = new KnightBoard(16, 16);
+	KnightBoard a = new KnightBoard(6, 6);
 	//System.out.println(a.solveH(3,3,1));
 	a.solve();
 	System.out.println(a);
