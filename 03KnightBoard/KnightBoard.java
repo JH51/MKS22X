@@ -50,18 +50,8 @@ public class KnightBoard {
 	return false;
     }
 
-    public void clearGreater(int level){
-	for(int row = 0; row < board.length; row++){
-	    for(int col = 0; col < board[0].length;col++){
-		if(board[row][col] == level){
-		    board[row][col] = 0;
-		}
-	    }
-	}
-    }
-
     public static void main(String[] args) {
-	KnightBoard a = new KnightBoard(7, 7);
+	KnightBoard a = new KnightBoard(16, 16);
 	//System.out.println(a.solveH(3,3,1));
 	a.solve();
 	System.out.println(a);
