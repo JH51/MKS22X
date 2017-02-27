@@ -1,9 +1,13 @@
+import java.util.*;
+import java.io.*;
+
 public class Maze {
 
     private char[][] maze;
     private boolean animate;
 
     public Maze(String filename, boolean ani) {
+	
     }
     
     public void setAnimate(boolean b) {
@@ -22,6 +26,15 @@ public class Maze {
             wait(20);
         }
 	return false;
+    }
+
+    public String toString() {
+	String finalStr = "";
+	for (char[] c1 : maze[]) {
+	    for (char c2 : maze[0]) {
+		finalStr += c2;
+	    }
+	}
     }
     
 }
