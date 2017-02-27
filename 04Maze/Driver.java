@@ -6,7 +6,6 @@ public class Driver{
         f.clearTerminal();
         f.setAnimate(true);
         f.solve();
-	
         f.clearTerminal();
         System.out.println(f);
     }
