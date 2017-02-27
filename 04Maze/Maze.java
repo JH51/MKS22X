@@ -8,8 +8,8 @@ public class Maze {
 
     public Maze(String filename, boolean ani) {
 	setAnimate(ani);
-	File infile = new File(filename);
-	Scanner inf = new Scanner(text);
+	File file  = new File(filename);
+	Scanner scanner = new Scanner(file);
 	int lineNumber = 1;
 	int x = 0, y = 0;
 	while (inf.hasNextLine()) {
@@ -37,17 +37,17 @@ public class Maze {
             wait(20);
         }
 	if (maze[y][x] == 'E') return true;
-	if (maze[y - 1][x] != '#') {
-	    return solve(x, y - 1);
+	if (maze[y - 1][x] == ' ') {
+	    if (solve(x, y - 1)) maze[y - 1][x] = '@';
 	}
-	if (maze[y + 1][x] != 'x') {
-	    return solve(x, y + 1);
+	if (maze[y + 1][x] == ' ') {
+	    if (solve(x, y + 1)) maze[y + 1][x] = '@';
 	}
-	if (maze[y][x - 1] != '#') {
-	    return solve(x - 1, y);
+	if (maze[y][x - 1] == ' ') {
+	    if (solve(x - 1, y)) maze[y][x - 1] = '@';
 	}
-	if (maze[y][x + 1] != '#') {
-	    return solve(x + 1, y);
+	if (maze[y][x + 1] == ' ') {
+	    if (solve(x + 1, y)) maze[y][x + 1] = '@';
 	}
 	return false;
     }
@@ -59,6 +59,7 @@ public class Maze {
 		finalStr += c2;
 	    }
 	}
+	return finalStr;
     }
     
 }
