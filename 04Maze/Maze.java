@@ -11,9 +11,9 @@ public class Maze {
     }
     
     public boolean solve() {
-	int startx=0,starty=0;
-	maze[startx][starty] = ' ';
-	return solve(startx,starty);
+	int startX = 0, startY = 0;
+	maze[startX][starty] = ' ';
+	return solve(startX, startY);
     }
     
     private boolean solve(int x, int y) {
