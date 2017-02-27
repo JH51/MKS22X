@@ -25,6 +25,9 @@ public class Maze {
             System.out.println(this);
             wait(20);
         }
+	if (char[y][x] != '#') {
+	    
+	}
 	return false;
     }
 
