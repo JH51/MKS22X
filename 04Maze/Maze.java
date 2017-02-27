@@ -8,6 +8,12 @@ public class Maze {
 
     public Maze(String filename, boolean ani) {
 	setAnimate(ani);
+	File infile = new File(filename);
+	Scanner inf = new Scanner(text);
+	int lineNumber = 1;
+	while (inf.hasNextLine()) {
+	    String line = inf.nextLine();
+	}
     }
     
     public void setAnimate(boolean b) {
