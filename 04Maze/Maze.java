@@ -7,7 +7,7 @@ public class Maze {
     private boolean animate;
 
     public Maze(String filename, boolean ani) {
-	
+	setAnimate(ani);
     }
     
     public void setAnimate(boolean b) {
