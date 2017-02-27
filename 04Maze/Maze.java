@@ -11,8 +11,13 @@ public class Maze {
 	File infile = new File(filename);
 	Scanner inf = new Scanner(text);
 	int lineNumber = 1;
+	int x = 0, y = 0;
 	while (inf.hasNextLine()) {
 	    String line = inf.nextLine();
+	    while (line.length() > 0) {
+		maze[y][x] = line.charAt(0);
+		line = line.substring(1);
+	    }
 	}
     }
     
