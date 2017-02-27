@@ -25,8 +25,18 @@ public class Maze {
             System.out.println(this);
             wait(20);
         }
-	if (char[y][x] != '#') {
-	    
+	if (maze[y][x] == 'E') return true;
+	if (maze[y - 1][x] != '#') {
+	    return solve(x, y - 1);
+	}
+	if (maze[y + 1][x] != 'x') {
+	    return solve(x, y + 1);
+	}
+	if (maze[y][x - 1] != '#') {
+	    return solve(x - 1, y);
+	}
+	if (maze[y][x + 1] != '#') {
+	    return solve(x + 1, y);
 	}
 	return false;
     }
