@@ -25,6 +25,7 @@ public class Maze {
 		line = line.substring(1);
 		col += 1;
 	    }
+	    row ++ 1;
 	}
     }
 
