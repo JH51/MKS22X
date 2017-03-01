@@ -59,10 +59,13 @@ public class Maze {
 	if (maze[y][x] == 'E') return true;
 	if (maze[y][x] == ' ') {
 	    if (maze[y - 1][x] == ' ') {
-		if (solve(x - 1, y) ||
+		boolean b =
+		    solve(x - 1, y) ||
 		    solve(x + 1, y) ||
 		    solve(x, y - 1) ||
-		    solve(x, y + 1)) maze[y][x] = '@';
+		    solve(x, y + 1);
+		System.out.println(b);
+		if (b) maze[y][x] = '@';
 	    }
 	}
 	return false;
@@ -72,7 +75,7 @@ public class Maze {
 	String finalStr = "";
 	for (int row = 0; row < maze.length; row += 1) {
 	    for (char col = 0; col < maze[row].length; col += 1) {
-		finalStr += maze[row][col];
+		finalStr += maze[row][col] + " ";
 	    }
 	    finalStr += "\n";
 	}
