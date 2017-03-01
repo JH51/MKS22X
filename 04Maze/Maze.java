@@ -7,28 +7,36 @@ public class Maze {
     private boolean animate;
 
     public Maze(String filename) {
+	setAnimate(false);
 	File text = new File(filename);
-        Scanner inf = new Scanner(text);
-        int cols, rows = 1;
-        while (inf.hasNextLine()) {
-            String line = inf.nextLine();
+	try {
+        Scanner inf1 = new Scanner(text);
+        int cols = 0, rows = 1;
+        while (inf1.hasNextLine()) {
+            String line = inf1.nextLine();
 	    rows += 1;
+	    cols = line.length();
         }
 	maze = new char[rows][cols];
-	inf = new Scanner(text);
+	Scanner inf2 = new Scanner(text);
 	int col, row = 0;
-	while (inf.haxNextLine()) {
-	    line = inf.nextLine();
+	while (inf2.hasNextLine()) {
+	    String line = inf2.nextLine();
 	    col = 0;
 	    while (line.length() > 0) {
 		maze[row][col] = line.charAt(0);
+		//System.out.println(maze[row][col] + " " + row + " " + col);
 		line = line.substring(1);
 		col += 1;
 	    }
-	    row ++ 1;
+	    row += 1;
+	} }
+	catch (FileNotFoundException e) {
+	    maze = new char[0][0];
 	}
     }
 
+    /*
     public Maze(String filename, boolean ani) {
 	setAnimate(ani);
 	File file  = new File(filename);
@@ -43,6 +51,7 @@ public class Maze {
 	    }
 	}
     }
+    */
     
     private void wait(int millis) {
 	try { Thread.sleep(millis); }
@@ -54,7 +63,7 @@ public class Maze {
     }
     
     public boolean solve() {
-	int startX = 0, startY = 0;
+	int startX = 1, startY = 1;
 	maze[startX][startY] = ' ';
 	return solve(startX, startY);
     }
@@ -82,12 +91,18 @@ public class Maze {
 
     public String toString() {
 	String finalStr = "";
-	for (char[] c1 : maze[]) {
-	    for (char c2 : maze[0]) {
-		finalStr += c2;
+	for (int row = 0; row < maze.length; row += 1) {
+	    for (char col = 0; col < maze[row].length; col += 1) {
+		finalStr += maze[row][col];
 	    }
+	    finalStr += "\n";
 	}
 	return finalStr;
     }
     
+    public static void main(String[] args) {
+	Maze a = new Maze("data3.dat");
+	a.solve();
+	System.out.println(a);
+    }
 }
