@@ -35,23 +35,6 @@ public class Maze {
 	    maze = new char[0][0];
 	}
     }
-
-    /*
-    public Maze(String filename, boolean ani) {
-	setAnimate(ani);
-	File file  = new File(filename);
-	Scanner scanner = new Scanner(file);
-	int lineNumber = 1;
-	int x = 0, y = 0;
-	while (inf.hasNextLine()) {
-	    String line = inf.nextLine();
-	    while (line.length() > 0) {
-		maze[y][x] = line.charAt(0);
-		line = line.substring(1);
-	    }
-	}
-    }
-    */
     
     private void wait(int millis) {
 	try { Thread.sleep(millis); }
