@@ -7,7 +7,7 @@ public class Maze {
     private boolean animate;
 
     public Maze(String filename) {
-	setAnimate(false);
+	setAnimate(true);
 	File text = new File(filename);
 	try {
         Scanner inf1 = new Scanner(text);
@@ -74,17 +74,13 @@ public class Maze {
 	    wait(20);
         }
 	if (maze[y][x] == 'E') return true;
-	if (maze[y - 1][x] == ' ') {
-	    if (solve(x, y - 1)) maze[y][x] = '@';
-	}
-	if (maze[y + 1][x] == ' ') {
-	    if (solve(x, y + 1)) maze[y][x] = '@';
-	}
-	if (maze[y][x - 1] == ' ') {
-	    if (solve(x - 1, y)) maze[y][x] = '@';
-	}
-	if (maze[y][x + 1] == ' ') {
-	    if (solve(x + 1, y)) maze[y][x] = '@';
+	if (maze[y][x] == ' ') {
+	    if (maze[y - 1][x] == ' ') {
+		if (solve(x - 1, y) ||
+		    solve(x + 1, y) ||
+		    solve(x, y - 1) ||
+		    solve(x, y + 1)) maze[y][x] = '@';
+	    }
 	}
 	return false;
     }
@@ -102,7 +98,6 @@ public class Maze {
     
     public static void main(String[] args) {
 	Maze a = new Maze("data3.dat");
-	a.solve();
-	System.out.println(a);
+	System.out.println(a.solve());
     }
 }
