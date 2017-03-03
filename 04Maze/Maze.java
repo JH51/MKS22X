@@ -75,6 +75,10 @@ public class Maze {
     public void setAnimate(boolean b) {
         animate = b;
     }
+
+    public void clearTerminal(){
+        System.out.println("\033[2J\033[1;1H");
+    }
     
     public boolean solve() {
 	for (int row = 0; row < maze.length; row += 1) {
