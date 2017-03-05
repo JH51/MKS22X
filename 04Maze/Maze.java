@@ -106,7 +106,7 @@ public class Maze {
 		solve(x, y - 1) ||
 		solve(x, y + 1);
 	    if (b) return true;
-	    else maze[x][y] = ' ';
+	    else maze[x][y] = '.';
 	}
 	return false;
     }
