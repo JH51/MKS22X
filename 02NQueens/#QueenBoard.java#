@@ -12,6 +12,7 @@ public class QueenBoard {
     }
 
     private boolean solveH(int row) {
+	System.out.println(
 	if (board.length == 1) {
 	    addQueen(0, 0);
 	    return true;
