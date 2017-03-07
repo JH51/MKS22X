@@ -5,7 +5,7 @@ public class makelake {
     
     int[][] lake;
     int[][] directions;
-    int R, C, E, N;
+    int R, C, E, N, V;
 
     public makelake(String filename) {
 	File file = new File(filename);
@@ -16,9 +16,9 @@ public class makelake {
 	    E = Integer.parseInt(scanner.next());
 	    N = Integer.parseInt(scanner.next());
 	    lake = new int[R][C];
-	    for (int row = 0; row < R && scanner.hasNextLine(); row += 1) {
-		for (int col = 0; col < C && scanner.hasNext(); col += 1) {
-		    lake[row][col] = Integer.parseInt(scanner.next());
+	    for (int r = 0; r < R && scanner.hasNextLine(); r += 1) {
+		for (int c = 0; c < C && scanner.hasNext(); c += 1) {
+		    lake[r][c] = Integer.parseInt(scanner.next());
 		}
 	    }
 	    directions = new int[N][3];
@@ -27,10 +27,20 @@ public class makelake {
 		    directions[i][j] = Integer.parseInt(scanner.next());
 		}
 	    }
+
+	    for (int i = 0; i < directions.length; i += 1) {
+		System.out.println(this + "\n");
+		stomp(directions[i][0], directions[i][1], directions[i][2]);
+	    }
+
+	    for (int r = 0; r < lake.length; r += 1) {
+		for (int c = 0; c < lake[r].length; c += 1) {
+		    if (lake[r][c] >= E) lake[r][c] = 0;
+		    else lake[r][c] = E - lake[r][c];
+		}
+	    }
 	}
-	catch (FileNotFoundException e) {
-	    lake = new int[3][3];
-	}
+	catch (FileNotFoundException e) { }
     }
     
     public void stomp(int R_s, int C_s, int D_s) {
@@ -54,8 +64,11 @@ public class makelake {
 	String string = "";
 	for (int row = 0; row < lake.length; row += 1) {
 	    for (int col = 0; col < lake[row].length; col += 1) {
-		if (lake[row][col] < 10) string += " ";
-		string += lake[row][col] + " ";
+		if (lake[row][col] == 0) string += "-- ";
+		else {
+		    if (lake[row][col] < 10) string += " ";
+		    string += lake[row][col] + " ";		    
+		}
 	    }
 	    string += "\n";
 	}
