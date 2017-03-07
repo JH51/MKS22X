@@ -22,20 +22,22 @@ public class makelake {
 	    E = Integer.parseInt(temp[2]);
 	    N = Integer.parseInt(temp[3]);
 	    lake = new int[R][C];
-	    int row = 0, col = 0;
 	    String temp2 = "";
-	    while (scanner.hasNextLine() && row < lake.length) {
-		line = scanner.nextLine();
-		while (col < lake[row].length) {
-		    while (line.charAt(0) != ' ') {
-			lake[row][col] *= 10;
-			lake[row][col] += (int)line.charAt(0);
-			line = line.substring(1);
+	    while (scanner.hasNextLine() && R > 0) {
+		line = scanner.nextLine();		
+		i = 0;
+		for (int row = 0; row < lake.length; row += 1) {
+		    for (int col = 0; col < lake[row].length; col += 1) {
+			while (line.charAt(i) != ' ' && i < line.length() - 1) {
+			    System.out.println(line.charAt(i));
+			    lake[row][col] *= 10;
+			    lake[row][col] += (int) line.charAt(0);
+			    i += 1;
+			}
+			i += 1;
 		    }
-		    //System.out.println(lake[row][col]);
-		    col += 1;
 		}
-		row += 1;
+		R -= 1;
 	    }
 	}
 	catch (FileNotFoundException e) {
