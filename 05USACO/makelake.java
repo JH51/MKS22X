@@ -10,22 +10,21 @@ public class makelake {
 	try {
 	    Scanner scanner = new Scanner(file);
 	    int R, C, E, N;
-	    int[] RCEN = new int[4];
+	    int[] temp = new String[4];
 	    int i = 0;
-	    String temp = "", line = scanner.nextLine();
+	    String line = scanner.nextLine();
 	    while (line.length() > 0 && i < 4) {
 		while (! line.substring(0, 1).equals(" ")) {
-		    temp += line.substring(0, 1);
+		    temp[i] += line.substring(0, 1);
 		    line = line.substring(1);
 		}
-		int[i] = Integer.parseInt(temp);
-		int += 1 ;
-		temp = "";
+		i += 1;
+		line = line.substring(1);
 	    }
-	    R = RCEN[0];
-	    C = RCEN[1];
-	    E = RCEN[2];
-	    N = RCEN[3];	   
+	    R = Integer.parseInt(RCEN[0]);
+	    C = Integer.parseInt(RCEN[1]);
+	    E = Integer.parseInt(RCEN[2]);
+	    N = Integer.parseInt(RCEN[3]);
 	    while (scanner.hasNextLine()) {
 		
 	    }
