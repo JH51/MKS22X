@@ -28,6 +28,7 @@ public class makelake {
 	    while (scanner.hasNextLine()) {
 		
 	    }
+	    lake = new int[R][C];
 	}
 	catch (FileNotFoundException e) {
 	    lake = new int[3][3];
