@@ -5,27 +5,20 @@ public class makelake {
     
     int[][] lake;
     int[][] directions;
+    int R, C, E, N;
 
     public makelake(String filename) {
 	File file = new File(filename);
 	try {
 	    Scanner scanner = new Scanner(file);
-	    int R, C, E, N;
 	    String[] temp = new String[] {"", "", "", ""};
 	    int i = 0;
-	    String line = scanner.nextLine();
-	    for (int j = 0; j < line.length(); j += 1) {	
-		if (line.charAt(j) != ' ') temp[i] += line.charAt(j);
-		else i += 1;
-	    }	    
-	    R = Integer.parseInt(temp[0]);
-	    C = Integer.parseInt(temp[1]);
-	    E = Integer.parseInt(temp[2]);
-	    N = Integer.parseInt(temp[3]);
+	    R = Integer.parseInt(scanner.next());
+	    C = Integer.parseInt(scanner.next());
+	    E = Integer.parseInt(scanner.next());
+	    N = Integer.parseInt(scanner.next());
 	    lake = new int[R][C];
 	    for (int row = 0; row < lake.length && scanner.hasNextLine(); row += 1) {
-		line = scanner.nextLine();
-		i = 0;
 		for (int col = 0; col < lake[row].length; col += 1) {
 		    if (scanner.hasNext()) lake[row][col] = Integer.parseInt(scanner.next());
 		}
