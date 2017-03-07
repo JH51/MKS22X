@@ -4,6 +4,7 @@ import java.util.*;
 public class makelake {
     
     int[][] lake;
+    int[][] directions;
 
     public makelake(String filename) {
 	File file = new File(filename);
