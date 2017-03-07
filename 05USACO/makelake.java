@@ -25,16 +25,9 @@ public class makelake {
 	    lake = new int[R][C];
 	    for (int row = 0; row < lake.length && scanner.hasNextLine(); row += 1) {
 		line = scanner.nextLine();
-		System.out.println("LINE " + line);
 		i = 0;
 		for (int col = 0; col < lake[row].length; col += 1) {
-		    System.out.println(line.charAt(i));
-		    while (line.charAt(i) != ' ' && i < line.length() - 1) {
-			lake[row][col] *= 10;
-			lake[row][col] += (int) line.charAt(0);
-			i += 1;
-		    }
-		    i += 1;
+		    if (scanner.hasNext()) lake[row][col] = Integer.parseInt(scanner.next());
 		}
 	    }
 	}
@@ -53,10 +46,8 @@ public class makelake {
 	    }
 	}
 	int temp = max - D_s;
-	//	System.out.println(temp);
 	for (int r = R_s; r < R_s + 3; r += 1) {
 	    for (int c = C_s; c < C_s + 3; c += 1) {
-		//System.out.println(temp + " : " + i);
 		if (lake[r][c] > temp) lake[r][c] = temp;
 	    }
 	}
@@ -76,9 +67,8 @@ public class makelake {
     
     public static void main(String args[]) {
 	makelake a = new makelake("makelake.in");
-	//	System.out.print(a);
-	a.stomp(1, 1, 100);
-	a.stomp(1, 2, 200);
+	//	a.stomp(1, 1, 100);
+	//	a.stomp(1, 2, 200);
 	System.out.println(a);
     }
     
