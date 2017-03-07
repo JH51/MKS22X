@@ -38,6 +38,17 @@ public class makelake {
     public void stomp(int R_s, int C_s, int D_s) {
 	
     }
+
+    public String toString() {
+	String string = "";
+	for (int row = 0; row < lake.length; row += 1) {
+	    for (int col = 0; col < lake[row].length; col += 1) {
+		if (lake[row][col] < 10) string += " ";
+		string += lake[row][col] + " ";
+	    }
+	}
+	return string;
+    }
     
     public static void main(String args[]) {
 	System.out.println(Integer.parseInt("4 6 22 2"));
