@@ -10,25 +10,33 @@ public class makelake {
 	try {
 	    Scanner scanner = new Scanner(file);
 	    int R, C, E, N;
-	    String[] temp = new String[4];
+	    String[] temp = new String[] {"", "", "", ""};
 	    int i = 0;
 	    String line = scanner.nextLine();
-	    while (line.length() > 0 && i < 4) {
-		while (! line.substring(0, 1).equals(" ")) {
-		    temp[i] += line.substring(0, 1);
-		    line = line.substring(1);
-		}
-		i += 1;
-		line = line.substring(1);
-	    }
+	    for (int j = 0; j < line.length(); j += 1) {	
+		if (line.charAt(j) != ' ') temp[i] += line.charAt(j);
+		else i += 1;
+	    }	    
 	    R = Integer.parseInt(temp[0]);
 	    C = Integer.parseInt(temp[1]);
 	    E = Integer.parseInt(temp[2]);
 	    N = Integer.parseInt(temp[3]);
-	    while (scanner.hasNextLine()) {
-		
-	    }
 	    lake = new int[R][C];
+	    int row = 0, col = 0;
+	    String temp2 = "";
+	    while (scanner.hasNextLine() && row < lake.length) {
+		line = scanner.nextLine();
+		while (col < lake[row].length) {
+		    while (line.charAt(0) != ' ') {
+			lake[row][col] *= 10;
+			lake[row][col] += (int)line.charAt(0);
+			line = line.substring(1);
+		    }
+		    //System.out.println(lake[row][col]);
+		    col += 1;
+		}
+		row += 1;
+	    }
 	}
 	catch (FileNotFoundException e) {
 	    lake = new int[3][3];
@@ -46,12 +54,14 @@ public class makelake {
 		if (lake[row][col] < 10) string += " ";
 		string += lake[row][col] + " ";
 	    }
+	    string += "\n";
 	}
 	return string;
     }
     
     public static void main(String args[]) {
-	System.out.println(Integer.parseInt("4 6 22 2"));
+	makelake a = new makelake("makelake.in");
+	System.out.print(a);
     }
     
 }
