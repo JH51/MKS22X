@@ -10,7 +10,7 @@ public class makelake {
 	try {
 	    Scanner scanner = new Scanner(file);
 	    int R, C, E, N;
-	    int[] temp = new String[4];
+	    String[] temp = new String[4];
 	    int i = 0;
 	    String line = scanner.nextLine();
 	    while (line.length() > 0 && i < 4) {
@@ -21,10 +21,10 @@ public class makelake {
 		i += 1;
 		line = line.substring(1);
 	    }
-	    R = Integer.parseInt(RCEN[0]);
-	    C = Integer.parseInt(RCEN[1]);
-	    E = Integer.parseInt(RCEN[2]);
-	    N = Integer.parseInt(RCEN[3]);
+	    R = Integer.parseInt(temp[0]);
+	    C = Integer.parseInt(temp[1]);
+	    E = Integer.parseInt(temp[2]);
+	    N = Integer.parseInt(temp[3]);
 	    while (scanner.hasNextLine()) {
 		
 	    }
