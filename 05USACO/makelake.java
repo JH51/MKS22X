@@ -11,16 +11,20 @@ public class makelake {
 	File file = new File(filename);
 	try {
 	    Scanner scanner = new Scanner(file);
-	    String[] temp = new String[] {"", "", "", ""};
-	    int i = 0;
 	    R = Integer.parseInt(scanner.next());
 	    C = Integer.parseInt(scanner.next());
 	    E = Integer.parseInt(scanner.next());
 	    N = Integer.parseInt(scanner.next());
 	    lake = new int[R][C];
-	    for (int row = 0; row < lake.length && scanner.hasNextLine(); row += 1) {
-		for (int col = 0; col < lake[row].length; col += 1) {
-		    if (scanner.hasNext()) lake[row][col] = Integer.parseInt(scanner.next());
+	    for (int row = 0; row < R && scanner.hasNextLine(); row += 1) {
+		for (int col = 0; col < C && scanner.hasNext(); col += 1) {
+		    lake[row][col] = Integer.parseInt(scanner.next());
+		}
+	    }
+	    directions = new int[N][3];
+	    for (int i = 0; i < N; i += 1) {
+		for (int j = 0; j < 3; j += 1) {
+		    directions[i][j] = Integer.parseInt(scanner.next());
 		}
 	    }
 	}
