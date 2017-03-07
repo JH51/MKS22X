@@ -13,7 +13,7 @@ public class makelake {
 	    int[] RCEN = new int[4];
 	    int i = 0;
 	    String temp = "", line = scanner.nextLine();
-	    while (line.length() > 0) {
+	    while (line.length() > 0 && i < 4) {
 		while (! line.substring(0, 1).equals(" ")) {
 		    temp += line.substring(0, 1);
 		    line = line.substring(1);
