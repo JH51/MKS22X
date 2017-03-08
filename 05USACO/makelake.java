@@ -16,9 +16,9 @@ public class makelake {
 	    E = Integer.parseInt(scanner.next());
 	    N = Integer.parseInt(scanner.next());
 	    lake = new int[R][C];
-	    for (int r = 0; r < R && scanner.hasNextLine(); r += 1) {
-		for (int c = 0; c < C && scanner.hasNext(); c += 1) {
-		    lake[r][c] = Integer.parseInt(scanner.next());
+	    for (int row = 0; row < R && scanner.hasNextLine(); row += 1) {
+		for (int col = 0; col < C && scanner.hasNext(); col += 1) {
+		    lake[row][col] = Integer.parseInt(scanner.next());
 		}
 	    }
 	    directions = new int[N][3];
@@ -33,10 +33,10 @@ public class makelake {
 		stomp(directions[i][0], directions[i][1], directions[i][2]);
 	    }
 
-	    for (int r = 0; r < lake.length; r += 1) {
-		for (int c = 0; c < lake[r].length; c += 1) {
-		    if (lake[r][c] >= E) lake[r][c] = 0;
-		    else lake[r][c] = E - lake[r][c];
+	    for (int row = 0; row < lake.length; row += 1) {
+		for (int col = 0; col < lake[row].length; col += 1) {
+		    if (lake[row][col] >= E) lake[row][col] = 0;
+		    else lake[row][col] = E - lake[row][col];
 		}
 	    }
 	}
