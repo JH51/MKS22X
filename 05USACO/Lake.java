@@ -1,13 +1,13 @@
 import java.io.*;
 import java.util.*;
 
-public class makelake {
+public class Lake {
     
     int[][] lake;
     int[][] directions;
     int R, C, E, N, D, V;
 
-    public makelake(String filename) {
+    public Lake(String filename) {
 	File file = new File(filename);
 	try {
 	    Scanner scanner = new Scanner(file);
@@ -84,7 +84,7 @@ public class makelake {
     }
     
     public static void main(String args[]) {
-	makelake a = new makelake("makelake.in");
+	Lake a = new Lake("makelake.in");
 	//	a.stomp(1, 1, 100);
 	//	a.stomp(1, 2, 200);
 	//System.out.println(a);
