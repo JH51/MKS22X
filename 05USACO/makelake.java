@@ -39,9 +39,10 @@ public class makelake {
 		}
 	    }
 	    
-	    for (int row = 1; row < lake.length; row += 1) {
-		for (int col = 1; col < lake.length; col += 1) {
-		    if (lake[row][col] > 0) D += lake[row][col];
+	    for (int row = 0; row < lake.length; row += 1) {
+		for (int col = 0; col < lake[row].length; col += 1) {
+		    D += lake[row][col];
+		    System.out.println(D  + "\n" + this);
 		}
 	    }
 
@@ -88,7 +89,7 @@ public class makelake {
 	makelake a = new makelake("makelake.in");
 	//	a.stomp(1, 1, 100);
 	//	a.stomp(1, 2, 200);
-	System.out.println(a);
+	//System.out.println(a);
     }
     
 }
