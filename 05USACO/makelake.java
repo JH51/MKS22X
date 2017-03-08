@@ -42,13 +42,11 @@ public class makelake {
 	    for (int row = 0; row < lake.length; row += 1) {
 		for (int col = 0; col < lake[row].length; col += 1) {
 		    D += lake[row][col];
-		    System.out.println(D  + "\n" + this);
 		}
 	    }
 
 	    V = D * 72 * 72;
-	    System.out.println(D);
-	    
+
 	}
 	catch (FileNotFoundException e) { }
     }
