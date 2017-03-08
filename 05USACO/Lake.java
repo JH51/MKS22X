@@ -47,6 +47,16 @@ public class Lake {
 
 	    V = D * 72 * 72;
 
+	    while (filename.indexOf(".") != -1 && filename.charAt(filename.length() - 1) != '.') {
+		filename = filename.substring(0, filename.length() - 1);
+	    }
+	    try {
+		PrintWriter fileOut = new PrintWriter(filename + ".out", "UTF-8");
+		fileOut.println(V);
+		fileOut.close();		
+	    }
+	    catch (IOException e) { }
+
 	}
 	catch (FileNotFoundException e) { }
     }
@@ -84,7 +94,7 @@ public class Lake {
     }
     
     public static void main(String args[]) {
-	Lake a = new Lake("makelake.in");
+	Lake a = new Lake("makelake.1.in");
 	//	a.stomp(1, 1, 100);
 	//	a.stomp(1, 2, 200);
 	//System.out.println(a);
