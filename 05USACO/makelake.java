@@ -5,7 +5,7 @@ public class makelake {
     
     int[][] lake;
     int[][] directions;
-    int R, C, E, N, V;
+    int R, C, E, N, D, V;
 
     public makelake(String filename) {
 	File file = new File(filename);
@@ -28,8 +28,7 @@ public class makelake {
 		}
 	    }
 
-	    for (int i = 0; i < directions.length; i += 1) {
-		System.out.println(this + "\n");
+	    for (int i = 0; i < directions.length; i += 1) {		
 		stomp(directions[i][0], directions[i][1], directions[i][2]);
 	    }
 
@@ -39,6 +38,16 @@ public class makelake {
 		    else lake[row][col] = E - lake[row][col];
 		}
 	    }
+	    
+	    for (int row = 1; row < lake.length; row += 1) {
+		for (int col = 1; col < lake.length; col += 1) {
+		    if (lake[row][col] > 0) D += lake[row][col];
+		}
+	    }
+
+	    V = D * 72 * 72;
+	    System.out.println(D);
+	    
 	}
 	catch (FileNotFoundException e) { }
     }
