@@ -9,13 +9,14 @@ public class USACO {
     }
     
     public int silver(String filename) {
-	return 0;
+	Silver ctravel = new Silver(filename);
+	return ctravel.S;
     }
 
     public static void main(String[] args) {
 	USACO x = new USACO();
-	System.out.println(x.bronze("Test Files/makelake.10.in"));	
-	//System.out.println(x.silver("testfile2"));
+	System.out.println(x.bronze("Test Files/Bronze/makelake.10.in"));	
+	System.out.println(x.silver("Test FIles/Silver/ctravel.2.in"));
     }
 	
 }
