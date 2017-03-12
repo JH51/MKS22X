@@ -4,7 +4,7 @@ public class USACO {
     }
     
     public int bronze(String filename) {
-	Lake lake = new Lake(filename);
+	Bronze lake = new Bronze(filename);
 	return lake.V;
     }
     
