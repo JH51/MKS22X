@@ -97,8 +97,8 @@ public class Silver {
 		    travel2H(R1, C1, row, col, 1);
 		}
 	    }
-	    pasture2[0] = pasture2[1];
 	}
+	pasture2[0] = pasture2[1];
     }
     
     public void travel2H(int R1, int C1, int R2, int C2, int T) {
