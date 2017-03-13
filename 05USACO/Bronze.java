@@ -51,7 +51,7 @@ public class Bronze {
 		filename = filename.substring(0, filename.length() - 1);
 	    }
 	    try {
-		PrintWriter fileOut = new PrintWriter(filename + ".out", "UTF-8");
+		PrintWriter fileOut = new PrintWriter(filename + "out", "UTF-8");
 		fileOut.println(V);
 		fileOut.close();		
 	    }
