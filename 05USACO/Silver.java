@@ -32,8 +32,8 @@ public class Silver {
 	    R2 = Integer.parseInt(scanner.next());
 	    C2 = Integer.parseInt(scanner.next());
 
-	    travel2();
-	    travel(R1 - 1, C1 - 1, R2 - 1, C2 - 1, T);
+	    S = travel2();
+	    //travel(R1 - 1, C1 - 1, R2 - 1, C2 - 1, T);
 	}
 	
 	catch (FileNotFoundException e) { }
@@ -60,11 +60,11 @@ public class Silver {
 	return string;
     }
 
-    public String toString2() {
+    public String toString(int i) {
 	String string = "";
 	for (int row = 0; row < pasture.length; row += 1) {
 	    for (int col = 0; col < pasture[row].length; col += 1) {
-		string += pasture2[0][row][col] + " ";
+		string += pasture2[i][row][col] + " ";
 	    }
 	    string += "\n";
 	}
@@ -90,39 +90,50 @@ public class Silver {
 	return;
     }
 
-    public void travel2() {
-	for (int i = 1; i <= T; i += 1) {
+    public int travel2() {
+	R1 -= 1;
+	C1 -= 1;
+	R2 -= 1;
+	C2 -= 1;
+	
+	try { if (pasture2[0][R1 - 1][C1] != -1) pasture2[0][R1 - 1][C1] = 1; }
+	catch (IndexOutOfBoundsException e) { };
+	try { if (pasture2[0][R1 + 1][C1] != -1) pasture2[0][R1 + 1][C1] = 1; }
+	catch (IndexOutOfBoundsException e) { };
+	try { if (pasture2[0][R1][C1 - 1] != -1) pasture2[0][R1][C1 - 1] = 1; }
+	catch (IndexOutOfBoundsException e) { };
+	try { if (pasture2[0][R1][C1 + 1] != -1) pasture2[0][R1][C1 + 1] = 1; }
+	catch (IndexOutOfBoundsException e) { };
+	//System.out.println(this.toString(0));
+
+	int time = 1;
+	while (time < T) {
+	    pasture2[1] = new int[N][M];
 	    for (int row = 0; row < pasture2[0].length; row += 1) {
-		for (int col = 0; col < pasture2[1][row].length; col += 1) {
-		    travel2H(R1, C1, row, col, 1);
+		for (int col = 0; col < pasture2[0][0].length; col += 1) {
+		    if (pasture2[0][row][col] != -1) {			
+			try { if (pasture2[0][row - 1][col] != -1) pasture2[1][row][col] += pasture2[0][row - 1][col]; }
+			catch (IndexOutOfBoundsException e) { };
+			try { if (pasture2[0][row + 1][col] != -1) pasture2[1][row][col] += pasture2[0][row + 1][col]; }
+			catch (IndexOutOfBoundsException e) { };
+			try { if (pasture2[0][row][col - 1] != -1) pasture2[1][row][col] += pasture2[0][row][col - 1]; }
+			catch (IndexOutOfBoundsException e) { };
+			try { if (pasture2[0][row][col + 1] != -1) pasture2[1][row][col] += pasture2[0][row][col + 1]; }
+			catch (IndexOutOfBoundsException e) { };
+		    }
+		    else pasture2[1][row][col] = -1;
 		}
 	    }
+	    pasture2[0] = pasture2[1];
+	    //System.out.println(time + " " + T + "\n" + this.toString(0));
+	    time += 1;
 	}
-	pasture2[0] = pasture2[1];
-    }
-    
-    public void travel2H(int R1, int C1, int R2, int C2, int T) {
-	if (T == 0 && R1 == R2 && C1 == C2) {
-	    pasture2[1][R1][C1] = 1;
-	    return;
-	}
-	if (T <= 0 ||
-	    R1 < 0 ||
-	    R1 >= pasture.length ||
-	    C1 < 0 ||
-	    C1 >= pasture[0].length) return;
-	if (pasture[R1][C1] != '*') {
-	    travel(R1 - 1, C1, R2, C2, T - 1);
-	    travel(R1 + 1, C1, R2, C2, T - 1);
-	    travel(R1, C1 - 1, R2, C2, T - 1);
-	    travel(R1, C1 + 1, R2, C2, T - 1);
-	}
-	return;
+	return pasture2[0][R2][C2];
     }
     
     public static void main(String[] args) {
-	Silver a = new Silver("Test Files/Silver/ctravel.3.in");
-	System.out.println(a.toString2());
+	Silver a = new Silver("Test Files/Silver/ctravel.10.in");
+	//System.out.println(a.toString2());
     }
 
 }
