@@ -13,10 +13,9 @@ public class Quiz2Redux {
 	if (string.length() == 0) return;
 	int size = words.size();
 	for (int i = 0; i < size; i += 1) {
-	    words.add(words.get(i) + string.charAt(0));
-	    words.add(words.get(i));
-	    help(string.substring(1), words);
+	    words.add(words.get(i) + string.charAt(0));	    
 	}
+	help(string.substring(1), words);
 	return;
     }
 
