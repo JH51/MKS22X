@@ -18,13 +18,5 @@ public class Quiz2Redux {
 	help(string.substring(1), words);
 	return;
     }
-
-    public static void main(String[] args) {
-	ArrayList<String> words = combinations("abcd");
-	for (int i = 0; i < words.size(); i += 1) {
-	    System.out.println(words.get(i));
-	}
-	System.out.println(words.size());
-    }
-
+    
 }
