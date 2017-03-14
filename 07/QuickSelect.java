@@ -9,9 +9,9 @@ public class QuickSelect {
     }
     
     int part(int[] data, int start, int end) {
-        int r = random.nextInt(end) + start;
-	int[] temp = new int[data.length];
-	part(temp, r, end);
+	int p = start
+        while (start <= end) {
+	    while (start <= end && nums[start] <= nums[p]) start += 1;
     }
     
     static void main(String[] args) {
