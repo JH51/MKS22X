@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 public class QuickSelect {
 
@@ -9,10 +9,9 @@ public class QuickSelect {
     }
     
     int part(int[] data, int start, int end) {
-	int p = start
-        while (start <= end) {
-	    while (start <= end && data[start] <= data[p]) start += 1;
-	    while
+	int p = random.nextInt(end - start) + start;
+	int[] left = new int[p], right = new int[data.length - p];
+	
     }
     
     static void main(String[] args) {
