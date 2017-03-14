@@ -11,7 +11,7 @@ public class QuickSelect {
     int part(int[] data, int start, int end) {
 	int p = start
         while (start <= end) {
-	    while (start <= end && nums[start] <= nums[p]) start += 1;
+	    while (start <= end && data[start] <= data[p]) start += 1;
 	    while
     }
     
