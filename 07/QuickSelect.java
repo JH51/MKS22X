@@ -12,6 +12,7 @@ public class QuickSelect {
 	int p = start
         while (start <= end) {
 	    while (start <= end && nums[start] <= nums[p]) start += 1;
+	    while
     }
     
     static void main(String[] args) {
