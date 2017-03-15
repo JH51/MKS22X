@@ -37,7 +37,7 @@ public class Select {
 
     public static void main(String[] args) {
 	int[] a = {5, 4, 3, 7, 4, 6, 1, 2};
-	System.out.println(quickSelect(a, 2));
+	System.out.println(quickSelect(a, 3));
     }
     
 }
