@@ -34,6 +34,7 @@ public class Quick {
 	return start;
     }
 
+/*
     public static void main(String[] args) {
 	int[] a = {2, 10, 15, 23, 0,  5};
 	System.out.println(select(a, 0));
@@ -43,5 +44,6 @@ public class Quick {
 	System.out.println(select(a, 4));
 	System.out.println(select(a, 5));
     }
+*/
     
 }
