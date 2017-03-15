@@ -16,7 +16,7 @@ public class Quick {
     }
     
     static int part(int[] data, int start, int end) {
-	int pivot = new Random().nextInt(end - start) + start;
+	int pivot = new Random().nextInt(end - start + 1) + start;
 	int temp = data[end];
 	data[end] = data[pivot];
 	data[pivot] = temp;
@@ -26,7 +26,7 @@ public class Quick {
 		data[i] = data[start];
 		data[start] = temp;
 		start += 1;
-		for (int j = 0; j < data.length; j += 1) System.out.print(data[j] + " ");
+		//for (int j = 0; j < data.length; j += 1) System.out.print(data[j] + " ");
 		//System.out.println(" " + pivot + ":" + data[pivot]);
 	    }
 	}
