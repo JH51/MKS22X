@@ -38,7 +38,7 @@ public class Quick {
 
     public static void main(String[] args) {
 	int[] a = {5, 4, 3, 7, 6, 1, 2};
-	System.out.println(quickSelect(a, 3));
+	System.out.println(select(a, 3));
     }
     
 }
