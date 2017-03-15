@@ -2,11 +2,11 @@ import java.util.*;
 
 public class Select {
 
-    int quickSelect(int[] data, int k) {
-	return quickselect(data, 0, G.length - 1, k - 1);
+    static int quickSelect(int[] data, int k) {
+	return quickSelect(data, 0, data.length - 1, k - 1);
     }
     
-    int quickSelect(int[] data, int start, int end, int k) {
+    static int quickSelect(int[] data, int start, int end, int k) {
 	if (start <= end) {
 	    int pivot = part(data, start, end);
 	    if (pivot == k) return data[k];	    
@@ -16,7 +16,7 @@ public class Select {
 	return data[k];
     }
     
-    int part(int[] data, int start, int end) {
+    static int part(int[] data, int start, int end) {
 	int pivot = new Random().nextInt(end - start + 1) + start;
 	int temp = data[end];
 	data[end] = data[pivot];
