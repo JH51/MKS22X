@@ -26,8 +26,6 @@ public class Quick {
 		data[i] = data[start];
 		data[start] = temp;
 		start += 1;
-		//for (int j = 0; j < data.length; j += 1) System.out.print(data[j] + " ");
-		//System.out.println(" " + pivot + ":" + data[pivot]);
 	    }
 	}
 	temp = data[start];
