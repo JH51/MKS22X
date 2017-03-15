@@ -3,7 +3,7 @@ import java.util.*;
 public class Quick {
 
     static int select(int[] data, int k) {
-	return select(data, 0, data.length - 1, k - 1);
+	return select(data, 0, data.length - 1, k);
     }
     
     static int select(int[] data, int start, int end, int k) {
@@ -35,8 +35,13 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-	int[] a = {5, 4, 3, 7, 6, 1, 2};
+	int[] a = {2, 10, 15, 23, 0,  5};
+	System.out.println(select(a, 0));
+	System.out.println(select(a, 1));
+	System.out.println(select(a, 2));
 	System.out.println(select(a, 3));
+	System.out.println(select(a, 4));
+	System.out.println(select(a, 5));
     }
     
 }
