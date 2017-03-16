@@ -22,7 +22,7 @@ public class Quick {
 	    eTemp = end;
 	int[] dTemp = new int[data.length];
 	for (int i = start; i < end; i += 1) {
-	    if (data[i] < pElement) {
+	    if (data[i] <= pElement) {
 		dTemp[sTemp] = data[i];
 		sTemp += 1;
 	    }
