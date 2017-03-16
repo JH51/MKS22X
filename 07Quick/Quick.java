@@ -26,7 +26,7 @@ public class Quick {
 		dTemp[sTemp] = data[i];
 		sTemp += 1;
 	    }
-	    if (data[i] > temp[end]) {
+	    if (data[i] > pElement) {
 		dTemp[eTemp] = data[i];
 		eTemp -= 1;
 	    }
@@ -50,7 +50,17 @@ public class Quick {
 	temp = data[start];
 	data[start] = data[end];
 	data[end] = temp;
-	return start;
+	return pivot;
+    }
+
+    public static void main(String[] args) {
+	int[] ary = {2, 10, 15, 23, 0,  5};
+	System.out.println(select(ary, 0));
+	System.out.println(select(ary, 1));
+	System.out.println(select(ary, 2));
+	System.out.println(select(ary, 3));
+	System.out.println(select(ary, 4));
+	System.out.println(select(ary, 5));
     }
     
 }
