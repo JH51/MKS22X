@@ -31,7 +31,7 @@ public class Quick {
 		eTemp -= 1;
 	    }
 	}
-	return pivot;
+	return sTemp;
     }
     
     static int part2(int[] data, int start, int end) {
