@@ -15,7 +15,21 @@ public class Quick {
 	return data[k];
     }
 
-    static int part(int[] data, int start, int end) {
+    static int[] sort(int[] data) {
+	return sort(data, 0, data.length - 1);
+    }
+
+    static int[] sort(int[] data, int start, int end) {
+	if (Math.abs(start - end) <= 1) return data;
+	if (start < end) {
+	    int pivot = part(data, start, end);
+	    sort(data, start, pivot);
+	    sort(data, pivot, end);
+	}
+	return data;
+    }
+
+    static int part2(int[] data, int start, int end) {
 	int pivot = new Random().nextInt(end - start + 1) + start,
 	    pElement = data[pivot], 
 	    sTemp = start,
@@ -34,7 +48,7 @@ public class Quick {
 	return sTemp;
     }
     
-    static int part2(int[] data, int start, int end) {
+    static int part(int[] data, int start, int end) {
 	int pivot = new Random().nextInt(end - start + 1) + start;
 	int temp = data[end];
 	data[end] = data[pivot];
@@ -61,6 +75,8 @@ public class Quick {
 	System.out.println(select(ary, 3));
 	System.out.println(select(ary, 4));
 	System.out.println(select(ary, 5));
+	sort(ary);
+	for (int i : ary) System.out.print(i + " ");
     }
     
 }
