@@ -50,21 +50,22 @@ public class Quick {
     
     static int part(int[] data, int start, int end) {
 	int pivot = new Random().nextInt(end - start + 1) + start;
-	int temp = data[end];
-	data[end] = data[pivot];
-	data[pivot] = temp;
+        data = swap(data, pivot, end);
 	for (int i = start; i < end; i += 1) {
 	    if (data[i] < data[end]) {
-		temp = data[i];
-		data[i] = data[start];
-		data[start] = temp;
+	        data = swap(data, start, i);
 		start += 1;
 	    }
 	}
-	temp = data[start];
-	data[start] = data[end];
-	data[end] = temp;
+	data = swap(data, start, end);
 	return pivot;
+    }
+
+    static int[] swap(int[] data, int a, int b) {
+	int temp = data[a];
+	data[a] = data[b];
+	data[b] = temp;
+	return data;
     }
 
     public static void main(String[] args) {
