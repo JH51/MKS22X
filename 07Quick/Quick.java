@@ -69,7 +69,7 @@ public class Quick {
 
     public static void main(String[] args) {
 	int[] ary = {2, 10, 15, 23, 0,  5};
-	//System.out.println(quickSelect(ary, 0));
+	System.out.println(quickSelect(ary, 0));
 	System.out.println(quickSelect(ary, 1));
 	System.out.println(quickSelect(ary, 2));
 	System.out.println(quickSelect(ary, 3));
@@ -77,6 +77,7 @@ public class Quick {
 	System.out.println(quickSelect(ary, 5));
 	quickSort(ary);
 	for (int i : ary) System.out.print(i + " ");
+	System.out.println("");
     }
     
 }
