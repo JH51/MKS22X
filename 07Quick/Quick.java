@@ -2,24 +2,24 @@ import java.util.*;
 
 public class Quick {
 
-    static int select(int[] data, int k) {
+    static int quickSelect(int[] data, int k) {
 	return select(data, 0, data.length - 1, k);
     }
     
-    static int select(int[] data, int start, int end, int k) {
+    static int quickSelect(int[] data, int start, int end, int k) {
 	if (start <= end) {
 	    int pivot = part(data, start, end);
-	    if (pivot > k) return select(data, start, end - 1, k);
-	    if (pivot < k) return select(data, pivot + 1, end, k);
+	    if (pivot > k) return quickSelect(data, start, end - 1, k);
+	    if (pivot < k) return quickSelect(data, pivot + 1, end, k);
 	}
 	return data[k];
     }
 
-    static int[] sort(int[] data) {
-	return sort(data, 0, data.length - 1);
+    static int[] quickSort(int[] data) {
+	return quickSort(data, 0, data.length - 1);
     }
 
-    static int[] sort(int[] data, int start, int end) {
+    static int[] quickSort(int[] data, int start, int end) {
 	if (Math.abs(start - end) <= 1) return data;
 	if (start < end) {
 	    int pivot = part(data, start, end);
