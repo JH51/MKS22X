@@ -3,7 +3,7 @@ import java.util.*;
 public class Quick {
 
     static int quickSelect(int[] data, int k) {
-	return select(data, 0, data.length - 1, k);
+	return quickSelect(data, 0, data.length - 1, k);
     }
     
     static int quickSelect(int[] data, int start, int end, int k) {
@@ -23,8 +23,8 @@ public class Quick {
 	if (Math.abs(start - end) <= 1) return data;
 	if (start < end) {
 	    int pivot = part(data, start, end);
-	    sort(data, start, pivot);
-	    sort(data, pivot, end);
+	    quickSort(data, start, pivot);
+	    quickSort(data, pivot, end);
 	}
 	return data;
     }
@@ -69,13 +69,13 @@ public class Quick {
 
     public static void main(String[] args) {
 	int[] ary = {2, 10, 15, 23, 0,  5};
-	System.out.println(select(ary, 0));
-	System.out.println(select(ary, 1));
-	System.out.println(select(ary, 2));
-	System.out.println(select(ary, 3));
-	System.out.println(select(ary, 4));
-	System.out.println(select(ary, 5));
-	sort(ary);
+	System.out.println(quickSelect(ary, 0));
+	System.out.println(quickSelect(ary, 1));
+	System.out.println(quickSelect(ary, 2));
+	System.out.println(quickSelect(ary, 3));
+	System.out.println(quickSelect(ary, 4));
+	System.out.println(quickSelect(ary, 5));
+	quickSort(ary);
 	for (int i : ary) System.out.print(i + " ");
     }
     
