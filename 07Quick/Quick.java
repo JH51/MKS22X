@@ -22,7 +22,7 @@ public class Quick {
     static int[] quickSort(int[] data, int start, int end) {
 	if (Math.abs(start - end) <= 1) return data;
 	if (start < end) {
-	    int pivot = part(data, start, end);
+	    int pivot = part3(data, start, end);
 	    quickSort(data, start, pivot);
 	    quickSort(data, pivot, end);
 	}
@@ -64,17 +64,19 @@ public class Quick {
     static int part3(int[] data, int start, int end) {
 	int pivot = new Random().nextInt(end - start + 1) + start;
         swap(data, pivot, end);
-	for (int i = start; i < end; i += 1) {
-	    if (data[i] == data[pivot]) {
+	int i = start, j = end;
+	while (i < j) {
+	    if (data[i] == data[end]) {
 		i += 1;
 	    }
 	    else if (data[i] < data[end]) {
 	        swap(data, start, i);
-		i += 1;
 		start += 1;
+		i += 1;
 	    }
 	    else if (data[i] > data[end]) {
 		swap(data, start, end);
+		end -= 1;
 	    }
 	}
 	swap(data, start, end);
