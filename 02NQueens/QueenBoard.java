@@ -39,12 +39,13 @@ public int getSolutionCount() {
 
 public int countSolutions() {
     solutionCount = 0;
+    board = new int[board.length][board.length];
     countSolutions(0);
-    return (solutionCount > 0) ? solutionCount : 0;
+    return solutionCount;
 }
 
 public boolean countSolutions(int row) {
-    if (board.length <= 3 && board.length != 1 && board.length != 2) return false;
+    if (board.length < 4 && board.length != 1 && board.length != 2) return false;
     if (row >= board.length) return true;
     for (int col = 0; col < board.length; col += 1) {
         if (board[row][col] == 0) {
