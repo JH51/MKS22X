@@ -34,15 +34,13 @@ return false;
 }
 
 public int getSolutionCount() {
-    solutionCount = 0;
-    countSolutions(0);
-    return (solutionCount > 0) ? solutionCount : -1;
+    return countSolutions();
 }
 
 public int countSolutions() {
     solutionCount = 0;
     countSolutions(0);
-    return (solutionCount > 0) ? solutionCount : -1;
+    return (solutionCount > 0) ? solutionCount : 0;
 }
 
 public boolean countSolutions(int row) {
@@ -153,7 +151,7 @@ public static void main(String[] args) {
     */
 
     public static void main(String[] args) {
-        QueenBoard q = new QueenBoard(2);
+        QueenBoard q = new QueenBoard(5);
         System.out.println(q.getSolutionCount());
     }
 
