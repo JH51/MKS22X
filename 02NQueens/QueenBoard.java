@@ -1,7 +1,7 @@
 public class QueenBoard {
 
     private int[][] board;
-    private int solutionCount;
+    private int solutionCount = -1;
 
     public QueenBoard(int size){
         board = new int[size][size];
@@ -34,18 +34,17 @@ return false;
 }
 
 public int getSolutionCount() {
-    return countSolutions();
-}
-
-public int countSolutions() {
-    solutionCount = 0;
-    board = new int[board.length][board.length];
-    countSolutions(0);
     return solutionCount;
 }
 
+public void countSolutions() {
+    board = new int[board.length][board.length];
+    solutionCount = 0;
+    countSolutions(0);
+}
+
 public boolean countSolutions(int row) {
-    if (board.length < 4 && board.length != 1 && board.length != 2) return false;
+    if (row == board.length + 1) return false;
     if (row >= board.length) return true;
     for (int col = 0; col < board.length; col += 1) {
         if (board[row][col] == 0) {
