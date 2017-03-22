@@ -48,9 +48,10 @@ public class Quick {
     static int part2(int[] data, int start, int end) {
         int pivot = new Random().nextInt(end - start + 1) + start,
             p = data[pivot],
-            i = start;
+            i = start,
+            j = end;
         swap(data, pivot, end);
-        while (i <= end) {
+        while (i < end) {
             if (data[i] == p) {
                 i += 1;
             }
@@ -63,7 +64,9 @@ public class Quick {
                 swap(data, i, end);
                 end -= 1;
             }
+            //swap(data, end, j);
         }
+
         return pivot;
     }
 
