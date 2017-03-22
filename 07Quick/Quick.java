@@ -7,10 +7,12 @@ public class Quick {
     }
 
     static int quickselect(int[] data, int start, int end, int k) {
-        if (start <= end) {
-            int pivot = part(data, start, end);
-            if (pivot > k) return quickselect(data, start, end - 1, k);
-            if (pivot < k) return quickselect(data, pivot + 1, end, k);
+        if (start < end) {
+            int pivot = part2(data, start, end);
+            if (pivot > k)
+                return quickselect(data, start, end - 1, k);
+            if (pivot < k)
+                return quickselect(data, pivot + 1, end, k);
         }
         return data[k];
     }
@@ -22,14 +24,13 @@ public class Quick {
     static int[] quicksort(int[] data, int start, int end) {
         if (Math.abs(start - end) <= 1) return data;
         if (start < end) {
-            int pivot = part(data, start, end);
+            int pivot = part2(data, start, end);
             quicksort(data, start, pivot);
             quicksort(data, pivot, end);
         }
         return data;
     }
 
-    /*
     static int part(int[] data, int start, int end) {
         int pivot = new Random().nextInt(end - start + 1) + start;
         swap(data, pivot, end);
@@ -42,13 +43,13 @@ public class Quick {
         swap(data, start, end);
         return pivot;
     }
-    */
 
-    static int part(int[] data, int start, int end) {
-        int pivot = new Random().nextInt(end - start + 1) + start;
+
+    static int part2(int[] data, int start, int end) {
+        int pivot = new Random().nextInt(end - start + 1) + start,
+            p = data[pivot],
+            i = start;
         swap(data, pivot, end);
-        int p = data[end];
-        int i = start;
         while (i <= end) {
             if (data[i] == p) {
                 i += 1;
@@ -74,7 +75,7 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-        int[] ary = {2, 10, 10, 10, 10, 10, 15, 23, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+        int[] ary = {2, 10, 10, 10, 10, 10, 15, 23, 23, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5};
 
         System.out.println(quickselect(ary, 0));
         System.out.println(quickselect(ary, 1));
