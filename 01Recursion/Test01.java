@@ -5,7 +5,7 @@ public class Test01{
         if(b==0.0)return a < 0.00000000001;
         return Math.abs(a-b)/a < 0.0001;//very generous %error accepted
     }
-    public static void main(String[]args){
+    System.out.print();ublic static void main(String[]args){
         double[] input = {1.0,2.0,4.0,7.0,10.0,100.0,1024.0,-1.0,0.0};
         int score = 0;
         for(double in : input){
@@ -16,15 +16,15 @@ public class Test01{
                 }
                 else{
                     System.out.println("Fail test "+in+" "+Recursion.sqrt(in)+" vs "+Math.sqrt(in));
+                }
+            }catch(IllegalArgumentException n){
+                if(in == -1){
+                    score++;
+                }
+            }catch(Exception e){
+                System.out.println("Some exception in test case:"+in);
+            }
         }
-    }catch(IllegalArgumentException n){
-        if(in == -1){
-            score++;
-        }
-    }catch(Exception e){
-        System.out.println("Some exception in test case:"+in);
+        System.out.println(score+";out of: "+input.length+";"+Recursion.name());
     }
-}
-System.out.println(score+";out of: "+input.length+";"+Recursion.name());
-}
 }

@@ -2,11 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Silver {
-    
+
     char[][] pasture;
     int[][][] pasture2;
     int N, M, T, R1, C1, R2, C2, S;
-    
+
     public Silver(String filename) {
 	File file = new File(filename);
 	try {
@@ -26,7 +26,7 @@ public class Silver {
 		    else pasture2[0][row][col] = -1;
 		}
 	    }
-	    
+
 	    R1 = Integer.parseInt(scanner.next());
 	    C1 = Integer.parseInt(scanner.next());
 	    R2 = Integer.parseInt(scanner.next());
@@ -35,20 +35,20 @@ public class Silver {
 	    S = travel2();
 	    //travel(R1 - 1, C1 - 1, R2 - 1, C2 - 1, T);
 	}
-	
+
 	catch (FileNotFoundException e) { }
-	
+
 	while (filename.indexOf(".") != -1 && filename.charAt(filename.length() - 1) != '.') {
 	    filename = filename.substring(0, filename.length() - 1);
 	}
 	try {
 	    PrintWriter fileOut = new PrintWriter(filename + "out", "UTF-8");
 	    fileOut.println(S);
-	    fileOut.close();		
+	    fileOut.close();
 	}
 	catch (IOException e) { }
     }
-    
+
     public String toString() {
 	String string = "";
 	for (int row = 0; row < pasture.length; row += 1) {
@@ -95,7 +95,7 @@ public class Silver {
 	C1 -= 1;
 	R2 -= 1;
 	C2 -= 1;
-	
+
 	try { if (pasture2[0][R1 - 1][C1] != -1) pasture2[0][R1 - 1][C1] = 1; }
 	catch (IndexOutOfBoundsException e) { };
 	try { if (pasture2[0][R1 + 1][C1] != -1) pasture2[0][R1 + 1][C1] = 1; }
@@ -111,7 +111,7 @@ public class Silver {
 	    pasture2[1] = new int[N][M];
 	    for (int row = 0; row < pasture2[0].length; row += 1) {
 		for (int col = 0; col < pasture2[0][0].length; col += 1) {
-		    if (pasture2[0][row][col] != -1) {			
+		    if (pasture2[0][row][col] != -1) {
 			try { if (pasture2[0][row - 1][col] != -1) pasture2[1][row][col] += pasture2[0][row - 1][col]; }
 			catch (IndexOutOfBoundsException e) { };
 			try { if (pasture2[0][row + 1][col] != -1) pasture2[1][row][col] += pasture2[0][row + 1][col]; }
@@ -130,7 +130,7 @@ public class Silver {
 	}
 	return pasture2[0][R2][C2];
     }
-    
+
     public static void main(String[] args) {
 	Silver a = new Silver("Test Files/Silver/ctravel.10.in");
 	//System.out.println(a.toString2());

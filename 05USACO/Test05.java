@@ -2,11 +2,11 @@ import java.util.*;
 import java.io.*;
 
 public class Test05 {
-    
+
     public static void main(String[]args) throws Exception{
 
 	USACO u = new USACO();
-	String number = args[0];	
+	String number = args[0];
 
 	if(args.length == 1){
 	    String file = "makelake."+number;
@@ -23,6 +23,6 @@ public class Test05 {
 	    }else{
 		System.out.println("Fail case: "+file+".in ------------");
 	    }
-	}	
+	}
     }
 }
