@@ -1,12 +1,12 @@
 public class QueenBoard {
-    
+
     private int[][] board;
     private int solutionCount;
-    
+
     public QueenBoard(int size){
 	board = new int[size][size];
     }
-    
+
     public void solve() {
         solveH(0);
     }
@@ -19,7 +19,7 @@ public class QueenBoard {
 	if (board.length <= 3) return false;
 	if (row >= board.length) return true;
 	for (int col = 0; col < board.length; col += 1) {
-	    //System.out.println(row + " " + col);	  
+	    //System.out.println(row + " " + col);
 	    System.out.print("\033[H\033[2J\n");
 	    System.out.flush();
 	    System.out.println(this);
@@ -32,15 +32,22 @@ public class QueenBoard {
 	removeQueen(row - 1);
 	return false;
     }
-    
+
     public int getSolutionCount() {
-	countSolutions(0);
+        solutionCount = 0;
+        countSolutions(0);
     	return (solutionCount > 0) ? solutionCount : -1;
     }
-    
+
+    public int countSolutions() {
+        solutionCount = 0;
+        countSolutions(0);
+        return (solutionCount > 0) ? solutionCount : -1;
+    }
+
     public boolean countSolutions(int row) {
 	if (board.length <= 3 && board.length != 1) return false;
-	if (row >= board.length) return true;;
+	if (row >= board.length) return true;
 	for (int col = 0; col < board.length; col += 1) {
 	    if (board[row][col] == 0) {
 		addQueen(row, col);
@@ -54,7 +61,7 @@ public class QueenBoard {
 	}
 	return false;
     }
-    
+
     private void addQueen(int row, int col) {
 	if (board.length > 1) {
 	for (int i = 0; i < board.length; i += 1) {
@@ -114,16 +121,16 @@ public class QueenBoard {
 	    }
 	}
     }
-	
+
     public String toString() {
 	String boardString = "";
 	for (int row = 0; row < board.length; row += 1) {
-	    for (int col = 0; col < board.length; col += 1) {	      
+	    for (int col = 0; col < board.length; col += 1) {
 		if (board[row][col] < 0) boardString += "Q ";
 		if (board[row][col] >= 0) boardString += "_ ";
 	    }
 	    boardString += "\n";
-	}	
+	}
 	return boardString;
     }
 
@@ -132,10 +139,10 @@ public class QueenBoard {
 	for (int row = 0; row < board.length; row += 1) {
 	    for (int col = 0; col < board.length; col += 1) boardString += board[row][col] + " ";
 	    boardString += "\n";
-	}	
+	}
 	return boardString;
     }
-    
+
     /*
     public static void main(String[] args) {
 	QueenBoard a = new QueenBoard(10);
@@ -144,5 +151,10 @@ public class QueenBoard {
 	//System.out.println(a.toString());
     }
     */
-    
+
+    public static void main(String[] args) {
+        QueenBoard q = new QueenBoard(11);
+        System.out.println(q.getSolutionCount());
+    }
+
 }
