@@ -74,7 +74,7 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-        int[] ary = {2, 10, 15, 23, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+        int[] ary = {2, 10, 10, 10, 10, 10, 15, 23, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
         System.out.println(quickselect(ary, 0));
         System.out.println(quickselect(ary, 1));
