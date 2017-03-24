@@ -7,6 +7,14 @@ public class Quick {
     }
 
     static int quickselect(int[] data, int start, int end, int k) {
+        ArrayList<Integer> a = new ArrayList<Integer>();
+        for (int i : data) if (a.indexOf(i) == -1) a.add(i);
+        data = new int[a.size()];
+        for (int i = 0; i < a.size(); i += 1) data[i] = a.get(i);
+        if (end > a.size()) end = a.size();
+        quicksort(data);
+        return data[k];
+        /*
         if (start < end) {
             int[] pivot = part2(data, start, end);
             if (pivot[2] > k)
@@ -15,6 +23,7 @@ public class Quick {
                 return quickselect(data, pivot[1], data.length - 1, k);
         }
         return data[k];
+        */
     }
 
     static void quicksort(int[] data) {
@@ -87,7 +96,7 @@ public class Quick {
     }
 
     public static void main(String[] args) {
-        int[] ary = {2, 10, 10, 10, 10, 10, 15, 23, 23, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5};
+        int[] ary = {2, 10, 10, 10, 10, 10, 15, 23, 23, 0, 5, 5, 7, 6, 3, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 5, 5};
 
         System.out.println(quickselect(ary, 0));
         System.out.println(quickselect(ary, 1));
