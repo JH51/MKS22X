@@ -35,9 +35,6 @@ public class Merge {
     public static void merge(int[] left, int[] right, int[] dest) {
         int i = 0, j = 0, k = 0;
         while (j < left.length && k < right.length) {
-            System.out.print(left[j] + " : " + right[k] + " | ");
-            for (int l : dest) System.out.print(l + " ");
-            System.out.println();
             if (left[j] <= right[k]) {
                 dest[i] = left[j];
                 j += 1;
@@ -87,7 +84,7 @@ public class Merge {
         System.out.println(isSorted(b));
         int[] c = new int[5];
         int[] d = {1, 5};
-        int[] e = {2, 4, 3};
+        int[] e = {2, 3, 4};
         merge(d, e, c);
         for (int i : c) System.out.print(i + " ");
         System.out.println(isSorted(c));
