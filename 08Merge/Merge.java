@@ -1,7 +1,7 @@
 public class Merge {
 
     static void mergesort(int[] a) {
-        if (a.length < 2) { }
+        if (a.length < 2) { return; }
         else {
             int[] left = new int[a.length / 2], right = new int[a.length - a.length / 2];
             for (int i = 0; i < a.length / 2; i += 1) left[i] = a[i];
@@ -10,7 +10,7 @@ public class Merge {
             mergesort(right);
             System.out.print("\nMERGING: ");
             for (int i : left) System.out.print(i + " ");
-            System.out.print(" +  ");
+            System.out.print(" |  ");
             for (int i : right) System.out.print(i + " ");
             merge(left, right, a);
             System.out.print("\nRESULT:  ");
@@ -26,7 +26,32 @@ public class Merge {
     }
     */
 
-    static void merge(int[] a, int[] b, int[] dest) {
+    public static void merge(int[] left, int[] right, int[] dest) {
+        int i = 0, j = 0, k = 0;
+        while (j < left.length && k < right.length) {
+            if (left[j] <= right[k]) {
+                dest[i] = left[j];
+                j += 1;
+                i += 1;
+            } else {
+                dest[i] = right[k];
+                k += 1;
+                i += 1;
+            }
+        }
+        while (j < left.length) {
+            dest[i] = left[j];
+            j += 1;
+            i += 1;
+        }
+        while (k < left.length) {
+            dest[i] = right[k];
+            k += 1;
+            i += 1;
+        }
+    }
+
+    static void merge(int[] a, int[] b, int[] dest, int f) {
         int i = 0, j = 0, k = 0;
         while (j < a.length &&
                k < b.length) {
