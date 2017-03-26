@@ -14,16 +14,32 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        //args = {"1", "1", "1", "1", "1"};
+        if (args.length == 1) {
+            String temp = args[0];
+            args = new String[6];
+            args[0] = temp;
+            args[1] = "1";
+            args[2] = "1";
+            args[3] = "1";
+            args[4] = "1";
+            args[5] = "1";
+        }
+        if (args.length == 0) {
+            args = new String[6];
+            args[0] = "1000";
+            args[1] = "1";
+            args[2] = "1";
+            args[3] = "1";
+            args[4] = "1";
+            args[5] = "1";
+        }
 
-        //int cases = Integer.parseInt(args[0]);
-        //int size = Integer.parseInt(args[1]);
 
         //a. Randomized; minVal to maxVal
         if (args[1].equals("1")) {
             long startTime = System.currentTimeMillis();
             int score = 0;
-            int[][] a = new int[new Random().nextInt(1000)][new Random().nextInt(1000)];
+            int[][] a = new int[Integer.parseInt(args[0])][new Random().nextInt(1000)];
             for (int[] aa : a) {
                 for (int i = 0; i < aa.length; i += 1) {
                     aa[i] = new Random().nextInt(Integer.MAX_VALUE) - new Random().nextInt(Integer.MAX_VALUE);
@@ -47,7 +63,7 @@ public class Driver {
         if (args[2].equals("1")) {
             long startTime = System.currentTimeMillis();
             int score = 0;
-            int[][] a = new int[new Random().nextInt(1000)][new Random().nextInt(1000)];
+            int[][] a = new int[Integer.parseInt(args[0])][new Random().nextInt(1000)];
             for (int[] aa : a) {
                 for (int i = 0; i < aa.length; i += 1) {
                     aa[i] = new Random().nextInt(Integer.MAX_VALUE) - new Random().nextInt(Integer.MAX_VALUE);
@@ -67,11 +83,11 @@ public class Driver {
                                "    " + Math.round(1000.0 * totalTime / (double)a.length) / 1000.0 + " ms / array\n");
         }
 
-        //c. Same values
+        //c. Repeating Value
         if (args[3].equals("1")) {
             long startTime = System.currentTimeMillis();
             int score = 0;
-            int[][] a = new int[new Random().nextInt(1000)][new Random().nextInt(1000)];
+            int[][] a = new int[Integer.parseInt(args[0])][new Random().nextInt(1000)];
             for (int[] aa : a) {
                 int r = new Random().nextInt(Integer.MAX_VALUE) - new Random().nextInt(Integer.MAX_VALUE);
                 for (int i = 0; i < aa.length; i += 1) {
@@ -85,7 +101,7 @@ public class Driver {
             }
             long endTime   = System.currentTimeMillis();
             long totalTime = endTime - startTime;
-            System.out.println("Random Value\n" +
+            System.out.println("Repeating Value\n" +
                                "    Ex: " + toString(a[0]) + "\n" +
                                "    " + score + " / " + a.length + "\n" +
                                "    " + totalTime + " ms\n" +
@@ -96,11 +112,11 @@ public class Driver {
         if (args[4].equals("1")) {
             long startTime = System.currentTimeMillis();
             int score = 0;
-            int[][] a = new int[new Random().nextInt(1000)][new Random().nextInt(1000)];
+            int[][] a = new int[Integer.parseInt(args[0])][new Random().nextInt(1000)];
             for (int[] aa : a) {
                 aa[0] = new Random().nextInt(Integer.MAX_VALUE) - new Random().nextInt(Integer.MAX_VALUE);
                 for (int i = 0; i < aa.length - 1; i += 1) {
-                    aa[i + 1] = aa[i] + new Random().nextInt(aa.length);
+                    aa[i + 1] = aa[i] + 1;
                 }
             }
             for (int[] aa : a) {
@@ -121,11 +137,11 @@ public class Driver {
         if (args[5].equals("1")) {
             long startTime = System.currentTimeMillis();
             int score = 0;
-            int[][] a = new int[new Random().nextInt(1000)][new Random().nextInt(1000)];
+            int[][] a = new int[Integer.parseInt(args[0])][new Random().nextInt(1000)];
             for (int[] aa : a) {
                 aa[0] = new Random().nextInt(Integer.MAX_VALUE) - new Random().nextInt(Integer.MAX_VALUE);
                 for (int i = 0; i < aa.length - 1; i += 1) {
-                    aa[i + 1] = aa[i] - new Random().nextInt(aa.length);
+                    aa[i + 1] = aa[i] - 1;
                 }
             }
             for (int[] aa : a) {
