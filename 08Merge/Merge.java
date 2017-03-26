@@ -67,27 +67,4 @@ public class Merge {
         return b;
     }
 
-    public static void main(String[] args) {
-        int[] a = new int[10];
-        for (int i = 0; i < a.length; i += 1) {
-            a[i] = new Random().nextInt(100) - new Random().nextInt(100);
-        }
-        for (int i : a) System.out.print(i + " ");
-        System.out.println();
-        mergesort(a);
-        for (int i : a) System.out.print(i + " ");
-        System.out.println();
-        System.out.println(isSorted(a));
-        int[] b = {3, 4, -3, 2, -7, 6, 5, 5, 1};
-        mergesort(b);
-        for (int i : b) System.out.print(i + " ");
-        System.out.println(isSorted(b));
-        int[] c = new int[5];
-        int[] d = {1, 5};
-        int[] e = {2, 3, 4};
-        merge(d, e, c);
-        for (int i : c) System.out.print(i + " ");
-        System.out.println(isSorted(c));
-    }
-
 }
