@@ -77,12 +77,4 @@ public class Merge {
         }
     }
 
-    public static void main(String[] args) {
-        int[] a = {1, 3, 5, 6, 9};
-        int[] b = {2, 4, 6, 7, 8};
-        int[] c = {6, 44, 74, 3, 654, 25, 8, 47, 975, 32};
-        mergesort(c);
-        for (int i : c) System.out.print(i + " ");
-    }
-
 }
