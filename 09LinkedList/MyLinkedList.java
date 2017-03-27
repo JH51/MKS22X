@@ -27,16 +27,14 @@ public class MyLinkedList {
     }
 
     public String toString() {
-        return this.toString("", this.start);
+        String s = this.toString("", this.start);
+        return (s.length() > 2) ? s.substring(0, s.length() - 2) : s;
     }
 
     private String toString(String s, LNode n) {
         if (! n.hasNext()) return "";
-        else {
-            s += n.car();
-            s += toString(s, n.cdr());
-            return s;
-        }
+        else s += n.car() + ", " + this.toString("", n.cdr());
+        return s;
     }
 
     public static void main(String[] args) {
