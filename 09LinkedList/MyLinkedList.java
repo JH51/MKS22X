@@ -18,21 +18,13 @@ public class MyLinkedList {
 	    this.car = car;
 	    this.cdr = cdr;
 	}
-	       	
-	public boolean hasNext() {
-	    return this.cdr != null;
-	}
-	
-	public LNode next() {
-	    return this.cdr;
-	}
-	
+
 	public String toString() {
 	    String s = "";
-	    if (this.hasNext()) {
+	    if (this.cdr != null) {
 		s += this.car;
 		LNode n = this.cdr;
-		while (n.hasNext()) {
+		while (this.cdr != null) {
 		    s += ", " + n.car;
 		    n = n.cdr;
 		}
@@ -113,7 +105,7 @@ public class MyLinkedList {
     }
 
     private String toString(String s, LNode n) {
-        if (! n.hasNext()) return "";
+        if (n.cdr == null) return "";
         else s += n.car + ", " + this.toString("", n.cdr);
         return s;
     }
