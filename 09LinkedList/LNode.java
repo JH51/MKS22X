@@ -7,6 +7,11 @@ public class LNode {
 
     }
 
+    public LNode(int car) {
+        this.Lcar = car;
+        this.Lcdr = new LNode();
+    }
+
     public LNode(int car, LNode cdr) {
         this.Lcar = car;
         this.Lcdr = cdr;
@@ -18,6 +23,14 @@ public class LNode {
 
     public LNode cdr() {
         return this.Lcdr;
+    }
+
+    public void setCar(int e) {
+        this.Lcar = e;
+    }
+
+    public void setCdr(LNode n) {
+        this.Lcdr = n;
     }
 
     public boolean hasNext() {
