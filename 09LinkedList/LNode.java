@@ -41,4 +41,17 @@ public class LNode {
         return this.Lcdr;
     }
 
+    public String toString() {
+        String s = "";
+        if (this.hasNext()) {
+            s += this.car();
+            LNode n = this.cdr();
+            while (n.hasNext()) {
+                s += ", " + n.car();
+                n = n.cdr();
+            }
+        }
+        return s;
+    }
+
 }
