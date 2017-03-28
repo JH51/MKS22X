@@ -78,6 +78,17 @@ public class MyLinkedList {
         return n.car;
     }
 
+    public int set(int i, int e) {
+	int tE = this.get(i);
+	LNode tN = start;
+	while (i > 0) {
+	    tN = tN.cdr;
+	    i -= 1;
+	}
+	tN = new LNode(e, tN.cdr);
+	return tE;
+    }
+
     public void addToStart(int element) {
         start = new LNode(element, this.start);
         size += 1;
