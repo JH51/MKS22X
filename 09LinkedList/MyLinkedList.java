@@ -2,55 +2,39 @@ public class MyLinkedList {
 
     private class LNode {
 	
-	int Lcar;
-	LNode Lcdr;
+	int car;
+	LNode cdr;
 	
 	public LNode() {
 
 	}
 
 	public LNode(int car) {
-	    this.Lcar = car;
-	    this.Lcdr = new LNode();
+	    this.car = car;
+	    this.cdr = new LNode();
 	}
 	
 	public LNode(int car, LNode cdr) {
-        this.Lcar = car;
-        this.Lcdr = cdr;
+	    this.car = car;
+	    this.cdr = cdr;
 	}
-	
-	public int car() {
-	    return this.Lcar;
-	}
-	
-	public LNode cdr() {
-	    return this.Lcdr;
-	}
-	
-	public void setCar(int e) {
-	    this.Lcar = e;
-	}
-	
-	public void setCdr(LNode n) {
-	    this.Lcdr = n;
-	}
-
+	       	
 	public boolean hasNext() {
-        return Lcdr != null;
+	    return this.cdr != null;
 	}
 	
 	public LNode next() {
-	    return this.Lcdr;
+	    return this.cdr;
 	}
 	
 	public String toString() {
 	    String s = "";
 	    if (this.hasNext()) {
-		s += this.car();
-		LNode n = this.cdr();
+		s += this.car;
+		LNode n = this.cdr;
 		while (n.hasNext()) {
-		    s += ", " + n.car();
-		    n = n.cdr();
+		    s += ", " + n.car;
+		    n = n.cdr;
 		}
 	    }
 	    return s;
@@ -71,8 +55,8 @@ public class MyLinkedList {
             this.addToStart(data[i]);
             System.out.println(start + " | " + end);
         }
-        end = start.cdr();
-        for (int i = size; i > 1; i -= 1) end = end.cdr();
+        end = start.cdr;
+        for (int i = size; i > 1; i -= 1) end = end.cdr;
         this.size = data.length;
         System.out.println();
         System.out.println(start + " | " + end);
@@ -86,7 +70,7 @@ public class MyLinkedList {
     public LNode get(int i) {
         LNode n = this.start;
         while (i > 0) {
-            n = n.cdr();
+            n = n.cdr;
             i -= 1;
         }
         return n;
@@ -98,9 +82,9 @@ public class MyLinkedList {
     }
 
     public void add(int element) {
-        end = new LNode(end.car(), new LNode(element, new LNode()));
-        start = new LNode(start.car(), end);
-        end = end.cdr();
+        end = new LNode(end.car, new LNode(element, new LNode()));
+        start = new LNode(start.car, end);
+        end = end.cdr;
         size += 1;
     }
 
@@ -117,7 +101,7 @@ public class MyLinkedList {
 
     private String toString(String s, LNode n) {
         if (! n.hasNext()) return "";
-        else s += n.car() + ", " + this.toString("", n.cdr());
+        else s += n.car + ", " + this.toString("", n.cdr);
         return s;
     }
 
