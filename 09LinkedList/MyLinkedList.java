@@ -2,13 +2,13 @@ public class MyLinkedList {
 
     private class LNode {
 	
-	private int Lcar;
-	private LNode Lcdr;
+	int Lcar;
+	LNode Lcdr;
 	
 	public LNode() {
-	    
+
 	}
-	
+
 	public LNode(int car) {
 	    this.Lcar = car;
 	    this.Lcdr = new LNode();
@@ -109,8 +109,10 @@ public class MyLinkedList {
     }
 
     public String toString() {
-        String s = this.toString("", this.start);
-        return (s.length() > 2) ? s.substring(0, s.length() - 2) : s;
+	String s = "["; 
+        s += this.toString("", this.start);
+        if (s.length() > 2) s = s.substring(0, s.length() - 2);
+	return s + "]";
     }
 
     private String toString(String s, LNode n) {

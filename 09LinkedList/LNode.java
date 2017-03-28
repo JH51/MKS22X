@@ -3,10 +3,6 @@ public class LNode {
     private int Lcar;
     private LNode Lcdr;
 
-    public LNode() {
-
-    }
-
     public LNode(int car) {
         this.Lcar = car;
         this.Lcdr = new LNode();
