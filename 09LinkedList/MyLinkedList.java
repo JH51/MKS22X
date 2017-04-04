@@ -94,6 +94,19 @@ public class MyLinkedList {
         return true;
     }
 
+    public int remove(int index) {
+        LNode tempNode = start;
+        int element;
+        while (index > 1) {
+            tempNode = tempNode.next;
+            index -= 1;
+        }
+        element = tempNode.value;
+        tempNode.next = tempNode.next.next;
+        this.size -= 1;
+        return element;
+    }
+
     public int size() {
         return this.size;
     }
@@ -116,6 +129,8 @@ public class MyLinkedList {
         MyLinkedList l = new MyLinkedList(a);
         System.out.println();
         l.add(5);
+        l.add(7);
+        l.remove(3);
         l.set(1, 10);
         System.out.println(l);
         for (int i : a) System.out.print(i + ", ");
