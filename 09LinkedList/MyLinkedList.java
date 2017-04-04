@@ -22,16 +22,14 @@ public class MyLinkedList {
 
         public String toString() {
             String string = "";
-            if (this.next != null) {
-                string += this.previous.value + ", " + this.value + ", " + this.next.value;
-                LNode tempNode = this.next;
-                while (this.next != null) {
-                    string += this.previous.value + ", " + this.value + ", " + this.next.value;
-                    tempNode = tempNode.next;
-                }
-            }
+            if (this.previous == null) string += "-, ";
+            else string += this.previous.value + ", ";
+            string += this.value + ", ";
+            if (this.next == null) string += "-";
+            else string += this.next.value;
             return string;
         }
+
     }
 
 
@@ -67,27 +65,30 @@ public class MyLinkedList {
     }
 
     public LNode getNthNode(int index) {
-	LNode tempNode = this.start;
-	while (index > 0) {
-	    tempNode = tempNode.next;
-	    index -= 1;
-	}
-	return tempNode;
+        LNode tempNode = this.start;
+        while (index > 0) {
+            tempNode = tempNode.next;
+            index -= 1;
+        }
+        return tempNode;
     }
 
     public int set(int index, int element) {
         int tempElement = this.get(index);
-        LNode tempNode = start;
+        LNode tempNode = this.start;
         while (index > 0) {
             tempNode = tempNode.next;
             index -= 1;
         }
         tempNode.value = element;
+        tempNode.previous.next = tempNode;
+        tempNode.next.previous = tempNode;
         return tempElement;
     }
 
-    public boolean addToStart(int e) {
-        this.start = new LNode(e, this.start);
+    public boolean addToStart(int element) {
+        this.start.next = this.start;
+        this.start.value = element;
         this.size += 1;
         return true;
     }
@@ -95,7 +96,7 @@ public class MyLinkedList {
     public boolean add(int element) {
         if (this.size == 0) start = new LNode(element);
         else {
-            LNode tempNode = start;
+            LNode tempNode = this.start;
             while (tempNode.next != null) tempNode = tempNode.next;
             LNode newNode = new LNode(element, null);
             newNode.previous = tempNode;
@@ -106,26 +107,27 @@ public class MyLinkedList {
     }
 
     public int indexOf(int element) {
-	LNode tempNode = start;
-	int index = 0;
-	while (index < size && tempNode.value != element) {
-	    index += 1;
-	    tempNode = tempNode.next;
-	}
-	return (index >= size) ? -1 : index;
+        LNode tempNode = this.start;
+        int index = 0;
+        while (index < size && tempNode.value != element) {
+            index += 1;
+            tempNode = tempNode.next;
+        }
+        return (index >= size) ? -1 : index;
     }
 
     public int remove(int index) {
-        LNode tempNode = start;
-        int element;
-        while (index > 1) {
+        LNode tempNode = this.start;
+        int tempElement;
+        while (index > 0) {
             tempNode = tempNode.next;
             index -= 1;
         }
-        element = tempNode.value;
-        tempNode.next = tempNode.next.next;
+        tempElement = tempNode.value;
+        tempNode.previous.next = tempNode.next;
+        tempNode.next.previous = tempNode.previous;
         this.size -= 1;
-        return element;
+        return tempElement;
     }
 
     public int size() {
@@ -134,7 +136,7 @@ public class MyLinkedList {
 
     public String toString() {
         String string = "[";
-        LNode tempNode = start;
+        LNode tempNode = this.start;
         while (tempNode != null) {
             string += tempNode.value + ", ";
             tempNode = tempNode.next;
@@ -144,28 +146,24 @@ public class MyLinkedList {
     }
 
     public String toStringDebug() {
-	String string = "";
-	LNode tempNode = start;
-	while (tempNode != null) {
-	    string += tempNode.toString();
-	    tempNode = tempNode.next;
-	    string += " | ";
-	}
-        if (string.length() > 1) string = string.substring(0, string.length() - 2);
+        String string = "";
+        LNode tempNode = this.start;
+        while (tempNode != null) {
+            string += tempNode.toString() + "  |  ";
+            tempNode = tempNode.next;
+        }
+        //if (string.length() > 1) string = string.substring(0, string.length() - 2);
         return string;
     }
 
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
-        System.out.println();
-        l.add(5);
-        l.add(7);
-        l.remove(3);
-        l.set(1, 10);
         System.out.println(l);
-	System.out.println(l.indexOf(10) + " : " + l.get(l.indexOf(10)));
-        for (int i : a) System.out.print(i + ", ");
+        System.out.println(l.remove(3));
+        System.out.println(l);
+        System.out.println(l.toStringDebug());
+        System.out.println(l.getNthNode(3));
     }
 
 }
