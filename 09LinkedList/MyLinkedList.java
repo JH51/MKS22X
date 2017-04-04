@@ -125,9 +125,9 @@ public class MyLinkedList {
     }
 
     public boolean addAfter(LNode location, LNode toBeAdded) {
+        toBeAdded.previous = location;
         toBeAdded.next = location.next;
         location.next.previous = toBeAdded;
-        toBeAdded.previous = location;
         location.next = toBeAdded;
         return true;
     }
@@ -178,14 +178,13 @@ public class MyLinkedList {
             string += tempNode.toString() + "  |  ";
             tempNode = tempNode.next;
         }
-        //if (string.length() > 1) string = string.substring(0, string.length() - 2);
+        if (string.length() != 0) string = string.substring(0, string.length() - 5);
         return string;
     }
 
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
-        l.add(3, 5);
         System.out.println(l);
         System.out.println(l.remove(3));
         System.out.println(l);
