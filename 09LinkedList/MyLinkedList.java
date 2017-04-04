@@ -94,7 +94,7 @@ public class MyLinkedList {
     }
 
     public boolean add(int element) {
-        if (this.size == 0) start = new LNode(element);
+        if (this.size == 0) this.start = new LNode(element);
         else {
             LNode tempNode = this.start;
             while (tempNode.next != null) tempNode = tempNode.next;
@@ -106,12 +106,38 @@ public class MyLinkedList {
         return true;
     }
 
+    public boolean add(int index, int element) {
+        if (this.size == 0) this.start = new LNode(element);
+        else {
+            LNode tempNode = this.start;
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index -= 1;
+            }
+            LNode newNode = new LNode(element);
+            newNode.previous = tempNode;
+            newNode.next = tempNode.next;
+            tempNode.next.previous = newNode;
+            tempNode.next = newNode;
+        }
+        this.size += 1;
+        return true;
+    }
+
+    public boolean addAfter(LNode location, LNode toBeAdded) {
+        toBeAdded.next = location.next;
+        location.next.previous = toBeAdded;
+        toBeAdded.previous = location;
+        location.next = toBeAdded;
+        return true;
+    }
+
     public int indexOf(int element) {
         LNode tempNode = this.start;
         int index = 0;
         while (index < size && tempNode.value != element) {
-            index += 1;
             tempNode = tempNode.next;
+            index += 1;
         }
         return (index >= size) ? -1 : index;
     }
@@ -159,6 +185,7 @@ public class MyLinkedList {
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
+        l.add(3, 5);
         System.out.println(l);
         System.out.println(l.remove(3));
         System.out.println(l);
