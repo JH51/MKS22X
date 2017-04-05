@@ -86,6 +86,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public int get(int index) {
+        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         LNode tempNode = this.start;
         while (index > 0) {
             tempNode = tempNode.next;
@@ -95,6 +96,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public LNode getNthNode(int index) {
+        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         LNode tempNode = this.start;
         while (index > 0) {
             tempNode = tempNode.next;
@@ -104,6 +106,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public int set(int index, int element) {
+        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         int tempElement = this.get(index);
         LNode tempNode = this.start;
         while (index > 0) {
@@ -137,6 +140,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public void add(int index, int element) {
+        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         if (this.size == 0) this.start = new LNode(element);
         else if (index == 0) {
             this.start.previous = new LNode(element);
@@ -177,6 +181,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public int remove(int index) {
+        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         LNode tempNode = this.start;
         int tempElement;
         if (index == 0 && this.size >= 1) {
