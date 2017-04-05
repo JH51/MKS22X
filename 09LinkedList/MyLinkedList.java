@@ -138,9 +138,14 @@ public class MyLinkedList implements Iterable<Integer> {
 
     public void add(int index, int element) {
         if (this.size == 0) this.start = new LNode(element);
+        else if (index == 0) {
+            this.start.previous = new LNode(element);
+            this.start.previous.next = start;
+            this.start = start.previous;
+        }
         else {
             LNode tempNode = this.start;
-            while (index > 0) {
+            while (index > 1) {
                 tempNode = tempNode.next;
                 index -= 1;
             }
@@ -230,9 +235,8 @@ public class MyLinkedList implements Iterable<Integer> {
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
-        l.add(3, 5);
-        System.out.println(l.toStringDebug());
-        l.remove(0);
+        l.add(0, 5);
+        l.add(7);
         System.out.println(l.toStringDebug());
         System.out.println(l);
         for (Integer i : l) System.out.print(i + ", ");
