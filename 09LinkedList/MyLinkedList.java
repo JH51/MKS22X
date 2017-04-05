@@ -1,6 +1,33 @@
 import java.util.*;
 
-public class MyLinkedList {
+public class MyLinkedList implements Iterable<Integer> {
+
+
+
+    public class LinkedListIterator implements Iterator<Integer> {
+	
+	LNode node;
+
+	public LinkedListIterator(MyLinkedList list) {
+	    this.node = list.getNthNode(0);
+	}
+
+	public boolean hasNext() {
+	    return this.node.next != null;
+	}
+
+	public Integer next() {
+	    if (this.hasNext()) return this.node.next.value;
+	    else throw new NoSuchElementException();
+	}
+	
+	public void remove() {
+	    throw new UnsupportedOperationException();
+	}
+	
+    }
+
+
 
     private class LNode {
 
@@ -117,15 +144,15 @@ public class MyLinkedList {
 
     public int remove(int index) {
         LNode tempNode = start;
-        int element;
+        int tempElement;
         while (index > 1) {
             tempNode = tempNode.next;
             index -= 1;
         }
-        element = tempNode.value;
+        tempElement = tempNode.value;
         tempNode.next = tempNode.next.next;
         this.size -= 1;
-        return element;
+        return tempElement;
     }
 
     public int size() {
@@ -155,17 +182,22 @@ public class MyLinkedList {
         return string;
     }
 
+    public LinkedListIterator iterator() {
+	return new LinkedListIterator(this);
+    }
+
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
         System.out.println();
         l.add(5);
         l.add(7);
-        l.remove(3);
+        l.remove(0);
         l.set(1, 10);
         System.out.println(l);
 	System.out.println(l.indexOf(10) + " : " + l.get(l.indexOf(10)));
         for (int i : a) System.out.print(i + ", ");
+	for (Integer i: l) System.out.print( i + ", ");
     }
 
 }
