@@ -5,26 +5,29 @@ public class MyLinkedList implements Iterable<Integer> {
 
 
     public class LinkedListIterator implements Iterator<Integer> {
-	
-	LNode node;
 
-	public LinkedListIterator(MyLinkedList list) {
-	    this.node = list.getNthNode(0);
-	}
+        LNode node;
 
-	public boolean hasNext() {
-	    return this.node.next != null;
-	}
+        public LinkedListIterator(MyLinkedList list) {
+            this.node = list.getNthNode(0);
+        }
 
-	public Integer next() {
-	    if (this.hasNext()) return this.node.next.value;
-	    else throw new NoSuchElementException();
-	}
-	
-	public void remove() {
-	    throw new UnsupportedOperationException();
-	}
-	
+        public boolean hasNext() {
+            return this.node.next != null;
+        }
+
+        public Integer next() {
+            if (this.hasNext()) {
+                this.node = this.node.next;
+                return this.node.value;
+            }
+            else throw new NoSuchElementException();
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 
@@ -170,11 +173,7 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public int remove(int index) {
-
         LNode tempNode = start;
-        int tempElement;
-        while (index > 1) {
-        LNode tempNode = this.start;
         int tempElement;
         while (index > 0) {
             tempNode = tempNode.next;
@@ -215,27 +214,15 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public LinkedListIterator iterator() {
-	return new LinkedListIterator(this);
+        return new LinkedListIterator(this);
     }
 
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
-        System.out.println();
         l.add(5);
-        l.add(7);
-        l.remove(0);
-        l.set(1, 10);
-        System.out.println(l);
-	System.out.println(l.indexOf(10) + " : " + l.get(l.indexOf(10)));
-        for (int i : a) System.out.print(i + ", ");
-	System.out.println(l.getNthNode(l.size() - 1).toString());
-        //for (Integer i : l) System.out.print(i + ", ");
-        System.out.println(l);
-        System.out.println(l.remove(3));
-        System.out.println(l);
         System.out.println(l.toStringDebug());
-        System.out.println(l.getNthNode(3));
+        for (Integer i : l) System.out.print(i + ", ");
     }
 
 }
