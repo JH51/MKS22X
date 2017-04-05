@@ -73,7 +73,7 @@ public class MyLinkedList implements Iterable<Integer> {
 
     public MyLinkedList(int[] data) {
         start = new LNode();
-        end = new LNode();
+        end = start;
         for (int i = 0; i < data.length; i += 1) {
             this.add(data[i]);
         }
@@ -136,7 +136,7 @@ public class MyLinkedList implements Iterable<Integer> {
         return true;
     }
 
-    public boolean add(int index, int element) {
+    public void add(int index, int element) {
         if (this.size == 0) this.start = new LNode(element);
         else {
             LNode tempNode = this.start;
@@ -151,7 +151,6 @@ public class MyLinkedList implements Iterable<Integer> {
             tempNode.next = newNode;
         }
         this.size += 1;
-        return true;
     }
 
     public boolean addAfter(LNode location, LNode toBeAdded) {
@@ -173,16 +172,27 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public int remove(int index) {
-        LNode tempNode = start;
+        LNode tempNode = this.start;
         int tempElement;
-        while (index > 0) {
-            tempNode = tempNode.next;
-            index -= 1;
+        if (index == 0 && this.size >= 1) {
+            tempElement = tempNode.value;
+            this.start.next.previous = null;
+            this.start = this.start.next;
         }
-        tempElement = tempNode.value;
-        tempNode.next = tempNode.next.next;
-        tempNode.previous.next = tempNode.next;
-        tempNode.next.previous = tempNode.previous;
+        else if (index >= this.size - 1) {
+            while (tempNode.next != null) tempNode = tempNode.next;
+            tempElement = tempNode.value;
+            tempNode.previous.next = null;
+        }
+        else {
+            while (index > 0) {
+                tempNode = tempNode.next;
+                index -= 1;
+            }
+            tempElement = tempNode.value;
+            tempNode.previous.next = tempNode.next;
+            tempNode.next.previous = tempNode.previous;
+        }
         this.size -= 1;
         return tempElement;
     }
@@ -220,8 +230,11 @@ public class MyLinkedList implements Iterable<Integer> {
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
-        l.add(5);
+        l.add(3, 5);
         System.out.println(l.toStringDebug());
+        l.remove(0);
+        System.out.println(l.toStringDebug());
+        System.out.println(l);
         for (Integer i : l) System.out.print(i + ", ");
     }
 
