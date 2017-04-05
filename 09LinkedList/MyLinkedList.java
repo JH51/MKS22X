@@ -197,7 +197,8 @@ public class MyLinkedList implements Iterable<Integer> {
         System.out.println(l);
 	System.out.println(l.indexOf(10) + " : " + l.get(l.indexOf(10)));
         for (int i : a) System.out.print(i + ", ");
-	for (Integer i: l) System.out.print( i + ", ");
+	System.out.println(l.getNthNode(l.size() - 1).toString());
+        //for (Integer i : l) System.out.print(i + ", ");
     }
 
 }
