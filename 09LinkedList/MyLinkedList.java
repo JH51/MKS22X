@@ -73,16 +73,16 @@ public class MyLinkedList implements Iterable<Integer> {
 
     public MyLinkedList(int[] data) {
         start = new LNode();
-        end = start;
         for (int i = 0; i < data.length; i += 1) this.add(data[i]);
+        end = start;
         while (end.next != null) end = end.next;
         this.size = data.length;
     }
 
     public MyLinkedList(int[] data, int size) {
         start = new LNode();
-        end = start;
         for (int i = 0; i < size; i += 1) this.add(data[i]);
+        end = start;
         while (end.next != null) end = end.next;
         this.size = size;
     }
