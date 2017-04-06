@@ -19,7 +19,7 @@ public class MyLinkedList implements Iterable<Integer> {
         public Integer next() {
             if (this.hasNext()) {
                 this.node = this.node.next;
-                return this.node.value;
+                return (this.hasNext()) ? this.node.previous.value : this.node.value;
             }
             else throw new NoSuchElementException();
         }
