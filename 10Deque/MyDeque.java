@@ -1,8 +1,12 @@
-import java.util;
+import java.util.*;
 
 public class MyDeque {
 
-    LinkedList<String> list;
+    private LinkedList<String> list;
+
+    public MyDeque() {
+        list = new LinkedList<String>();
+    }
 
     void addFirst(String string) {
         list.addFirst(string);
@@ -26,6 +30,16 @@ public class MyDeque {
 
     String getLast() {
         return list.get(list.size() - 1);
+    }
+
+    public static void main(String[] args) {
+        MyDeque d = new MyDeque();
+        d.addFirst("0");
+        d.addFirst("1");
+        d.addFirst("2");
+        for (int i = 0; i < 3; i += 1) {
+            System.out.println(d.removeFirst());
+        }
     }
 
 }
