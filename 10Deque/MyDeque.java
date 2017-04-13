@@ -9,34 +9,40 @@ public class MyDeque {
     }
 
     void addFirst(String string) {
+        if (string == null) throw new NullPointerException();
         list.addFirst(string);
     }
 
     void addLast(String string) {
+        if (string == null) throw new NullPointerException();
         list.addLast(string);
     }
 
     String removeFirst() {
+        if (this.list.size() == 0) throw new NoSuchElementException();
         return list.remove(0);
     }
 
     String removeLast() {
+        if (this.list.size() == 0) throw new NoSuchElementException();
         return list.remove(list.size() - 1);
     }
 
     String getFirst() {
+        if (this.list.size() == 0) throw new NoSuchElementException();
         return list.get(0);
     }
 
     String getLast() {
+        if (this.list.size() == 0) throw new NoSuchElementException();
         return list.get(list.size() - 1);
     }
 
     public static void main(String[] args) {
         MyDeque d = new MyDeque();
-        d.addFirst("0");
-        d.addFirst("1");
-        d.addFirst("2");
+        //d.addFirst("0");
+        //d.addFirst("1");
+        //d.addFirst("2");
         for (int i = 0; i < 3; i += 1) {
             System.out.println(d.removeFirst());
         }
