@@ -17,11 +17,16 @@ public class MyLinkedList implements Iterable<Integer> {
         }
 
         public Integer next() {
-            if (this.hasNext()) {
+            if (this.node.previous == null && this.node.next != null) {
                 this.node = this.node.next;
-                return (this.hasNext()) ? this.node.previous.value : this.node.value;
+                return this.node.previous.value;
             }
-            else throw new NoSuchElementException();
+            if (this.hasNext())
+                this.node = this.node.next;
+            if (this.node.next != null || this.node.previous != null)
+                return this.node.value;
+            else
+                throw new NoSuchElementException();
         }
 
         public void remove() {
@@ -116,8 +121,8 @@ public class MyLinkedList implements Iterable<Integer> {
             index -= 1;
         }
         tempNode.value = element;
-        tempNode.previous.next = tempNode;
-        tempNode.next.previous = tempNode;
+        if (tempNode.previous != null) tempNode.previous.next = tempNode;
+        if (tempNode.next != null) tempNode.next.previous = tempNode;
         return tempElement;
     }
 
@@ -142,7 +147,11 @@ public class MyLinkedList implements Iterable<Integer> {
     }
 
     public void add(int index, int element) {
-        if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
+        if (index == this.size()) {
+            this.add(element);
+            return;
+        }
+        if (index > this.size() || index < 0) throw new IndexOutOfBoundsException();
         if (this.size == 0) this.start = new LNode(element);
         else if (index == 0) {
             this.start.previous = new LNode(element);
@@ -186,7 +195,11 @@ public class MyLinkedList implements Iterable<Integer> {
         if (index >= this.size() || index < 0) throw new IndexOutOfBoundsException();
         LNode tempNode = this.start;
         int tempElement;
-        if (index == 0 && this.size >= 1) {
+        if (index == 0 && this.size == 1) {
+            tempElement = tempNode.value;
+            this.start = new LNode();
+        }
+        else if (index == 0 && this.size >= 1) {
             tempElement = tempNode.value;
             this.start.next.previous = null;
             this.start = this.start.next;
@@ -239,16 +252,32 @@ public class MyLinkedList implements Iterable<Integer> {
         return new LinkedListIterator(this);
     }
 
-    /*
     public static void main(String[] args) {
+        /*
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
         l.add(0, 5);
         l.add(7);
+        l.remove(0);
+        l.remove(l.size() - 1);
         System.out.println(l.toStringDebug());
         System.out.println(l);
         for (Integer i : l) System.out.print(i + ", ");
+        */
+
+        MyLinkedList a= new MyLinkedList();
+    	System.out.println(a.toString()+"\nSize: "+a.size());//[], size=0
+    	for(int i=0; i<20; i++){
+    	    a.add(i);
+            System.out.println(a.toStringDebug());
+    	    System.out.println(a + "  |  " + a.size());
+    	    System.out.println(a.get(a.size() - 1));
+    	    if(a.get(a.size()-1)%2==0) {
+                System.out.println(a.remove(a.size()-1));
+            }
+    	    //System.out.println(a);//Check if all nums arent odd
+    	}
+
     }
-    */
 
 }
