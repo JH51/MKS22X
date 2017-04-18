@@ -239,6 +239,7 @@ public class MyLinkedList implements Iterable<Integer> {
         return new LinkedListIterator(this);
     }
 
+    /*
     public static void main(String[] args) {
         int[] a = {0, 1, 2, 3, 4};
         MyLinkedList l = new MyLinkedList(a);
@@ -248,5 +249,6 @@ public class MyLinkedList implements Iterable<Integer> {
         System.out.println(l);
         for (Integer i : l) System.out.print(i + ", ");
     }
+    */
 
 }
