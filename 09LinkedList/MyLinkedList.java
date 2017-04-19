@@ -6,25 +6,19 @@ public class MyLinkedList implements Iterable<Integer> {
 
     public class LinkedListIterator implements Iterator<Integer> {
 
-        LNode node;
+        MyLinkedList list;
 
         public LinkedListIterator(MyLinkedList list) {
-            this.node = list.getNthNode(0);
+            this.list = list;
         }
 
         public boolean hasNext() {
-            return this.node.next != null;
+            return this.list.size() > 0;
         }
 
         public Integer next() {
-            if (this.node.previous == null && this.node.next != null) {
-                this.node = this.node.next;
-                return this.node.previous.value;
-            }
             if (this.hasNext())
-                this.node = this.node.next;
-            if (this.node.next != null || this.node.previous != null)
-                return this.node.value;
+		return this.list.remove(0);
             else
                 throw new NoSuchElementException();
         }
