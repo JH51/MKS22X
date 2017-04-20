@@ -38,14 +38,40 @@ public class MyDeque {
         return list.get(list.size() - 1);
     }
 
-    public static void main(String[] args) {
-        MyDeque d = new MyDeque();
-        //d.addFirst("0");
-        //d.addFirst("1");
-        //d.addFirst("2");
-        for (int i = 0; i < 3; i += 1) {
-            System.out.println(d.removeFirst());
+    static double eval(String string) {
+        String[] tokens = string.split(" ");
+        Stack<Double> values = new Stack<Double>();
+        for (String token : tokens) {
+            if (isOperation(token))
+                values.push(eval(values.pop(), values.pop(), token));
+            else
+                values.push(Double.parseDouble(token));
         }
+        return values.pop();
+    }
+
+    static boolean isOperation(String token) {
+        return token.length() == 1 && (
+            token.equals("+") ||
+            token.equals("-") ||
+            token.equals("*") ||
+            token.equals("/") ||
+            token.equals("%") );
+    }
+
+    static double eval(double value1, double value2, String operation) {
+        switch (operation) {
+            case "+": return value2 + value1;
+            case "-": return value2 - value1;
+            case "*": return value2 * value1;
+            case "/": return value2 / value1;
+            case "%": return value2 % value1;
+        }
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
     }
 
 }
