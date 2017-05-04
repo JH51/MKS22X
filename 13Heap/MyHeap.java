@@ -10,7 +10,7 @@ public class MyHeap {
 	minMax = 1;
     }
     
-    MyHeap(boolean b) {
+    public MyHeap(boolean b) {
 	a = new ArrayList<String>(1);
 	minMax (b) ? -1 : 1;
     }
