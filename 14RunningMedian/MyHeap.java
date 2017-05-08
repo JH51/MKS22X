@@ -18,19 +18,18 @@ public class MyHeap {
     void add(int s) {
         a.add(s);
         int i = a.size() - 1;
-        while (minMax * a.get(i) > a.get(i / 2) && i > 0)
+        while (minMax * a.get(i) >= a.get(i / 2) && i > 0)
             i = pushUp(i);
         return;
     }
 
     int remove() {
         int temp = a.get(0);
-        a.set(0, a.get(a.size() - 1));
-        a.remove(a.size() - 1);
+        a.set(0, a.remove(a.size() - 1));
         int i = 0;
         while (i * 2 + 2 < a.size() &&
-               (minMax * a.get(i) < a.get(2 * i + 1) ||
-	        minMax * a.get(i) < a.get(2 * i + 2)))
+	       ((minMax * a.get(i) < a.get(i * 2 + 1) ||
+		 (minMax * a.get(i) < a.get(i * 2 + 2)))))
             i = pushDown(i);
         return temp;
     }
@@ -40,17 +39,17 @@ public class MyHeap {
     }
 
     private int pushUp(int i) {
-        int s = a.get(i);
+        int t = a.get(i);
         a.set(i, a.get(i / 2));
-        a.set(i / 2, s);
+        a.set(i / 2, t);
         return i / 2;
     }
 
     private int pushDown(int i) {
-        int s = a.get(i);
+        int t = a.get(i);
         int j = (a.get(i * 2 + 1) >= a.get(i * 2 + 2)) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
-        a.set(i / 2, s);
+        a.set(i * 2 + j, t);
         return i * 2 + j;
     }
 
