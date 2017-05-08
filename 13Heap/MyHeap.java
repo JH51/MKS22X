@@ -50,7 +50,7 @@ public class MyHeap {
         String s = a.get(i);
         int j = (a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
-        a.set(i / 2, s);
+        a.set(i * 2 + j, s);
         return i * 2 + j;
     }
 
