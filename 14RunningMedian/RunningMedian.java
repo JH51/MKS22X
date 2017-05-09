@@ -15,7 +15,7 @@ public class RunningMedian {
             min.add(i);
         System.out.print(" -> " + this);
         while (min.size() > max.size() + 1) {
-            max.add(min.remove());
+            max.add(min.peek());
             System.out.print(" -> " + this);
         }
         while (max.size() > min.size() + 1) {

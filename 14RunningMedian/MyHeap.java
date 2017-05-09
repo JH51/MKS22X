@@ -27,10 +27,13 @@ public class MyHeap {
         int temp = a.get(0);
         a.set(0, a.remove(a.size() - 1));
         int i = 0;
-        while (i * 2 + 2 < a.size() &&
+        try {
+        while (//i * 2 + 1 < a.size() &&
                (minMax * a.get(i).compareTo(a.get(2 * i + 1)) < 0 ||
                 minMax * a.get(i).compareTo(a.get(2 * i + 2)) < 0))
             i = pushDown(i);
+        }
+        catch (IndexOutOfBoundsException e) { };
         return temp;
     }
 
@@ -51,6 +54,17 @@ public class MyHeap {
         a.set(i, a.get(i * 2 + j));
         a.set(i * 2 + j, t);
         return i * 2 + j;
+        /*
+        int j = i * 2 + 1;
+        try {
+            if (minMax * a.get(j).compareTo(a.get(j + 1)) >= 0)
+                j += 1;
+        }
+        catch (IndexOutOfBoundsException e) { };
+        a.set(i, a.get(j));
+        a.set(j, t);
+        return j;
+        */
     }
 
     public int size() {
