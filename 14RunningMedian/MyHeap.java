@@ -35,7 +35,7 @@ public class MyHeap {
     }
 
     int peek() {
-        return a.get(0);
+        return (a.size() > 0) ? a.get(0) : 0;
     }
 
     private int pushUp(int i) {
@@ -47,28 +47,35 @@ public class MyHeap {
 
     private int pushDown(int i) {
         int t = a.get(i);
-        int j = (a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
+        int j = (minMax * a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
         a.set(i * 2 + j, t);
         return i * 2 + j;
+    }
+
+    public int size() {
+        return a.size();
     }
 
     public String toString() {
         String s = "[";
         for (int i = 0; i < a.size(); i += 1)
             s += a.get(i) + ", ";
-        return s.substring(0, s.length() - 2) + "]";
+        return (s.length() > 1) ? s.substring(0, s.length() - 2) + "]" : s + "]";
     }
 
     public static void main(String[] args) {
-        MyHeap h = new MyHeap(false);
-        int[] s = new int[] {0, 8, 6, 4, 2, 9, 7, 5, 3, 1, 15, 657, 4, 432, 23};
-        for (int i : s) {
+        int[] a = new int[] {8,7,6,5,4,3,2,1};
+        MyHeap h = new MyHeap(true);
+        for (int i : a) {
             h.add(i);
             System.out.println(h);
         }
-        System.out.println(h.remove());
         System.out.println(h);
+        for (int i = 0; i < 3; i += 1) {
+            h.remove();
+            System.out.println(h);
+        }
     }
 
 }

@@ -1,25 +1,45 @@
 public class RunningMedian {
 
     private MyHeap min, max;
-    private int size;
 
     public RunningMedian() {
-	min = new MyHeap(true);
-	max = new MyHeap(false);
-	size = 0;
+        min = new MyHeap(true);
+        max = new MyHeap(false);
     }
-    
+
     public void add(int i) {
-	size += 1;
-	if (i <= min.peek())
-	    min.add(i);
-	else
-	    max.add(i);
+        System.out.print(i + "  ->  " + this + "  ->  ");
+        if (i <= max.peek())
+            max.add(i);
+        else
+            min.add(i);
+        while (min.size() > max.size() + 1)
+            max.add(min.remove());
+        while (max.size() > min.size() + 1)
+            min.add(max.remove());
+        System.out.println(this);
     }
 
     public double getMedian() {
-	if (size % 2 == 0)
-	    return ((double) min.peek() + (double) max.peek()) / 2.0;
+        if (min.size() == max.size() && min.size() != 0)
+            return ((double) min.peek() + (double) max.peek()) / 2.0;
+        if (min.size() != max.size())
+            return (min.size() > max.size()) ? (double) min.peek() : (double) max.peek();
+        return 0.0;
+    }
+
+    public String toString() {
+        String s = max + "  " + getMedian() + "  " + min;
+        return s;
+    }
+
+    public static void main(String[] args) {
+        RunningMedian m = new RunningMedian();
+        int[] a = new int[] {1,2,3,4,5,6,7,8,9};
+        for (int i : a)
+            m.add(i);
+        System.out.println(m.getMedian());
+        System.out.println(m);
     }
 
 }
