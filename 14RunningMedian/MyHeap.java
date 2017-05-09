@@ -71,9 +71,10 @@ public class MyHeap {
             h.add(i);
             System.out.println(h);
         }
-        System.out.println(h);
+        System.out.println();
         for (int i = 0; i < 3; i += 1) {
             h.remove();
+            h.add(i);
             System.out.println(h);
         }
     }

@@ -8,16 +8,21 @@ public class RunningMedian {
     }
 
     public void add(int i) {
-        System.out.print(i + "  ->  " + this + "  ->  ");
-        if (i <= max.peek())
+        System.out.print(i + "  ->  " + this);
+        if (i <= getMedian())
             max.add(i);
         else
             min.add(i);
-        while (min.size() > max.size() + 1)
+        System.out.print(" -> " + this);
+        while (min.size() > max.size() + 1) {
             max.add(min.remove());
-        while (max.size() > min.size() + 1)
+            System.out.print(" -> " + this);
+        }
+        while (max.size() > min.size() + 1) {
             min.add(max.remove());
-        System.out.println(this);
+            System.out.print(" -> " + this);
+        }
+        System.out.println();
     }
 
     public double getMedian() {
