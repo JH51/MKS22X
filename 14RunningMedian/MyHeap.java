@@ -62,7 +62,7 @@ public class MyHeap {
 
     public static void main(String[] args) {
         MyHeap h = new MyHeap(false);
-        int[] s = new int[] {0, 8, 6, 4, 2, 9, 7, 5, 3, 1};
+        int[] s = new int[] {0, 8, 6, 4, 2, 9, 7, 5, 3, 1, 15, 657, 4, 432, 23};
         for (int i : s) {
             h.add(i);
             System.out.println(h);

@@ -61,15 +61,4 @@ public class MyHeap {
         return s.substring(0, s.length() - 2) + "]";
     }
 
-    public static void main(String[] args) {
-        MyHeap h = new MyHeap();
-        String[] s = new String[] {"0", "8", "6", "4", "2", "9", "7", "5", "3", "1"};
-        for (String string : s) {
-            h.add(string);
-            System.out.println(h);
-        }
-        System.out.println(h.remove());
-        System.out.println(h);
-    }
-
 }
