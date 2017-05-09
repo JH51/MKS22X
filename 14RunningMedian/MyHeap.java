@@ -18,7 +18,7 @@ public class MyHeap {
     void add(int s) {
         a.add(s);
         int i = a.size() - 1;
-        while (minMax * a.get(i) >= a.get(i / 2) && i > 0)
+        while (minMax * a.get(i).compareTo(a.get(i / 2)) > 0 && i > 0)
             i = pushUp(i);
         return;
     }
@@ -28,8 +28,8 @@ public class MyHeap {
         a.set(0, a.remove(a.size() - 1));
         int i = 0;
         while (i * 2 + 2 < a.size() &&
-	       ((minMax * a.get(i) < a.get(i * 2 + 1) ||
-		 (minMax * a.get(i) < a.get(i * 2 + 2)))))
+               (minMax * a.get(i).compareTo(a.get(2 * i + 1)) < 0 ||
+                minMax * a.get(i).compareTo(a.get(2 * i + 2)) < 0))
             i = pushDown(i);
         return temp;
     }
@@ -47,7 +47,7 @@ public class MyHeap {
 
     private int pushDown(int i) {
         int t = a.get(i);
-        int j = (a.get(i * 2 + 1) >= a.get(i * 2 + 2)) ? 1 : 2;
+        int j = (a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
         a.set(i * 2 + j, t);
         return i * 2 + j;
@@ -61,7 +61,7 @@ public class MyHeap {
     }
 
     public static void main(String[] args) {
-        MyHeap h = new MyHeap();
+        MyHeap h = new MyHeap(false);
         int[] s = new int[] {0, 8, 6, 4, 2, 9, 7, 5, 3, 1};
         for (int i : s) {
             h.add(i);
