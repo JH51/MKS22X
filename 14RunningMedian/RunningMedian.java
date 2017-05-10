@@ -8,21 +8,21 @@ public class RunningMedian {
     }
 
     public void add(int i) {
-        System.out.print(i + "  ->  " + this);
+        //System.out.print(i + "  ->  " + this);
         if (i <= getMedian())
             max.add(i);
         else
             min.add(i);
-        System.out.print(" -> " + this);
+        //System.out.print(" -> " + this);
         if (min.size() > max.size() + 1) {
             max.add(min.remove());
-            System.out.print(" -> " + this);
+            //System.out.print(" -> " + this);
         }
         if (max.size() > min.size() + 1) {
             min.add(max.remove());
-            System.out.print(" -> " + this);
+            //System.out.print(" -> " + this);
         }
-        System.out.println();
+        //System.out.println();
     }
 
     public double getMedian() {
@@ -36,15 +36,6 @@ public class RunningMedian {
     public String toString() {
         String s = max + "  " + getMedian() + "  " + min;
         return s;
-    }
-
-    public static void main(String[] args) {
-        RunningMedian m = new RunningMedian();
-        for (int i = 1; i < 15; i += 1) {
-            m.add(i);
-        }
-        System.out.println(m.getMedian());
-        System.out.println(m);
     }
 
 }
