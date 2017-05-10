@@ -71,6 +71,13 @@ public class MyHeap {
         return a.size();
     }
 
+    public boolean isValid() {
+        boolean b = true;
+        for (int i = 0; i < a.size() && b; i += 1)
+            b = minMax * a.get(i).compareTo(a.get(i / 2)) <= 0;
+        return b;
+    }
+
     public String toString() {
         String s = "[";
         for (int i = 0; i < a.size(); i += 1)
@@ -79,18 +86,12 @@ public class MyHeap {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[] {8,7,6,5,4,3,2,1};
         MyHeap h = new MyHeap(true);
-        for (int i : a) {
+        for (int i = 20; i >= 0; i -= 2) {
             h.add(i);
-            System.out.println(h);
         }
-        System.out.println();
-        for (int i = 0; i < 3; i += 1) {
-            h.remove();
-            h.add(i);
-            System.out.println(h);
-        }
+        System.out.println(h);
+        System.out.println(h.isValid());
     }
 
 }

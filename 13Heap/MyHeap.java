@@ -61,4 +61,21 @@ public class MyHeap {
         return s.substring(0, s.length() - 2) + "]";
     }
 
+    public boolean isValid() {
+        boolean b = true;
+        for (int i = 0; i < a.size() && b; i += 1)
+            b = minMax * a.get(i).compareTo(a.get(i / 2)) <= 0;
+        return b;
+    }
+
+    public static void main(String[] args) {
+        MyHeap h = new MyHeap(true);
+        for (int i = 25;
+             i >= 0;
+             i -= 1)
+             h.add("" + (char)('A' + i));
+        System.out.println(h);
+        System.out.println(h.isValid());
+    }
+
 }
