@@ -28,15 +28,16 @@ public class MyHeap {
         a.set(0, a.get(a.size() - 1));
         a.remove(a.size() - 1);
         int i = 0;
-        while (i * 2 + 2 < a.size() &&
-               (minMax * a.get(i).compareTo(a.get(2 * i + 1)) < 0 ||
-                minMax * a.get(i).compareTo(a.get(2 * i + 2)) < 0))
+        while (i * 2 + 1 < a.size() &&
+                !isValid())
             i = pushDown(i);
+        }
+        catch (IndexOutOfBoundsException e) { };
         return temp;
     }
 
     String peek() {
-        return a.get(0);
+        return (a.size() > 0) ? a.get(0) : 0;
     }
 
     private int pushUp(int i) {
@@ -47,18 +48,13 @@ public class MyHeap {
     }
 
     private int pushDown(int i) {
-        String s = a.get(i);
-        int j = (a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
+        String t = a.get(i);
+        int j = i * 2 + 1;
+        if (j + 1 < a.size())
+            j = (minMax * a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
-        a.set(i * 2 + j, s);
+        a.set(i * 2 + j, t);
         return i * 2 + j;
-    }
-
-    public String toString() {
-        String s = "[";
-        for (int i = 0; i < a.size(); i += 1)
-            s += a.get(i) + ", ";
-        return s.substring(0, s.length() - 2) + "]";
     }
 
     public boolean isValid() {
@@ -66,6 +62,13 @@ public class MyHeap {
         for (int i = 0; i < a.size() && b; i += 1)
             b = minMax * a.get(i).compareTo(a.get(i / 2)) <= 0;
         return b;
+    }
+
+    public String toString() {
+        String s = "[";
+        for (int i = 0; i < a.size(); i += 1)
+            s += a.get(i) + ", ";
+        return s.substring(0, s.length() - 2) + "]";
     }
 
     public static void main(String[] args) {
