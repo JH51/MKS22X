@@ -87,15 +87,12 @@ public class MyHeap {
     }
 
     public static void main(String[] args) {
-        MyHeap h = new MyHeap(true);
-        for (int i = 20; i >= 0; i -= 2) {
-            h.add(i);
-        }
-        h.remove();
-        System.out.println(h);
-        h.remove();
-        System.out.println(h);
-        System.out.println(h.isValid());
+        MyHeap h = new MyHeap(false);
+        int[] a = new int[] {5,6,4,7,3,8,2,9,1};
+        //for (int i = 20; i >= 0; i -= 2)
+            //h.add(i);
+        for (int i : a) h.add(i);
+        System.out.println(h + "" + h.isValid());
     }
 
 }
