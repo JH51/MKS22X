@@ -14,11 +14,11 @@ public class RunningMedian {
         else
             min.add(i);
         System.out.print(" -> " + this);
-        while (min.size() > max.size() + 1) {
-            max.add(min.peek());
+        if (min.size() > max.size() + 1) {
+            max.add(min.remove());
             System.out.print(" -> " + this);
         }
-        while (max.size() > min.size() + 1) {
+        if (max.size() > min.size() + 1) {
             min.add(max.remove());
             System.out.print(" -> " + this);
         }
@@ -40,9 +40,9 @@ public class RunningMedian {
 
     public static void main(String[] args) {
         RunningMedian m = new RunningMedian();
-        int[] a = new int[] {1,2,3,4,5,6,7,8,9};
-        for (int i : a)
+        for (int i = 1; i < 15; i += 1) {
             m.add(i);
+        }
         System.out.println(m.getMedian());
         System.out.println(m);
     }

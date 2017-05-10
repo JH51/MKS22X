@@ -28,9 +28,10 @@ public class MyHeap {
         a.set(0, a.remove(a.size() - 1));
         int i = 0;
         try {
-        while (//i * 2 + 1 < a.size() &&
-               (minMax * a.get(i).compareTo(a.get(2 * i + 1)) < 0 ||
-                minMax * a.get(i).compareTo(a.get(2 * i + 2)) < 0))
+        while (i * 2 + 1 < a.size() &&
+               //(minMax * a.get(i).compareTo(a.get(2 * i + 1)) < 0 ||
+                //minMax * a.get(i).compareTo(a.get(2 * i + 2)) < 0))
+                !isValid())
             i = pushDown(i);
         }
         catch (IndexOutOfBoundsException e) { };
@@ -49,18 +50,18 @@ public class MyHeap {
     }
 
     private int pushDown(int i) {
-        int t = a.get(i);
-        int j = (minMax * a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
+
+        int t = a.get(i), j = i * 2 + 1;
+        if (j + 1 < a.size())
+            j = (minMax * a.get(i * 2 + 1).compareTo(a.get(i * 2 + 2)) >= 0) ? 1 : 2;
         a.set(i, a.get(i * 2 + j));
         a.set(i * 2 + j, t);
         return i * 2 + j;
+
         /*
+        int t = a.get(i);
         int j = i * 2 + 1;
-        try {
-            if (minMax * a.get(j).compareTo(a.get(j + 1)) >= 0)
-                j += 1;
-        }
-        catch (IndexOutOfBoundsException e) { };
+        j += (j + 1 < a.size()) ? 1 : 0;
         a.set(i, a.get(j));
         a.set(j, t);
         return j;
@@ -90,6 +91,9 @@ public class MyHeap {
         for (int i = 20; i >= 0; i -= 2) {
             h.add(i);
         }
+        h.remove();
+        System.out.println(h);
+        h.remove();
         System.out.println(h);
         System.out.println(h.isValid());
     }
