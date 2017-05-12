@@ -31,13 +31,11 @@ public class MyHeap {
         while (i * 2 + 1 < a.size() &&
                 !isValid())
             i = pushDown(i);
-        }
-        catch (IndexOutOfBoundsException e) { };
         return temp;
     }
 
     String peek() {
-        return (a.size() > 0) ? a.get(0) : 0;
+        return (a.size() > 0) ? a.get(0) : "";
     }
 
     private int pushUp(int i) {
@@ -69,16 +67,6 @@ public class MyHeap {
         for (int i = 0; i < a.size(); i += 1)
             s += a.get(i) + ", ";
         return s.substring(0, s.length() - 2) + "]";
-    }
-
-    public static void main(String[] args) {
-        MyHeap h = new MyHeap(true);
-        for (int i = 25;
-             i >= 0;
-             i -= 1)
-             h.add("" + (char)('A' + i));
-        System.out.println(h);
-        System.out.println(h.isValid());
     }
 
 }
