@@ -8,11 +8,13 @@ public class Location implements Comparable<Location>{
 		    int col,
 		    Location previous,
 		    int distToStart,
+		    int distToGoal,
 		    boolean aStar) {
 	this.row = row;
 	this.col = col;
 	this.previous = previous;
 	this.distToStart = distToStart;
+	this.distToGoal = distToGoal;
 	this.aStar = aStar;
     }
 
@@ -22,6 +24,10 @@ public class Location implements Comparable<Location>{
 
     public int getCol() {
 	return this.col;
+    }
+
+    public Location getPrevious() {
+	return this.previous;
     }
 
 }
