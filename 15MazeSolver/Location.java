@@ -17,6 +17,14 @@ public class Location implements Comparable<Location>{
 	this.distToGoal = distToGoal;
 	this.aStar = aStar;
     }
+    
+    public Location(int distToStart,
+		    int distToGoal,
+		    boolean aStar) {
+	this.distToStart = distToStart;
+	this.distToGoal = distToGoal;
+	this.aStar = aStar;
+    }
 
     public int getRow() {
 	return this.row;
@@ -38,11 +46,21 @@ public class Location implements Comparable<Location>{
 	return this.previous;
     }
 
+    public boolean getAStar() {
+	return this.aStar;
+    }
+
     public int compareTo(Location l) {
-	if (this.aStar)
-	    return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal())) * -1;
+	if (this.aStar && l.getAStar())
+	    return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal()));
 	else
-	    return (this.distToStart - l.getDistToStart()) * -1;
+	    return (this.distToStart - l.getDistToStart());
+    }
+
+    public static void main(String[] args) {
+	Location a = new Location(1, 0, true),
+	    b = new Location(1, 2, true);
+	System.out.println(a.compareTo(b));
     }
 
 }
