@@ -26,6 +26,14 @@ public class Location implements Comparable<Location>{
 	return this.col;
     }
 
+    public int getDistToGoal() {
+	return this.distToGoal;
+    }
+
+    public int getDistToStart() {
+	return this.distToStart;
+    }
+
     public Location getPrevious() {
 	return this.previous;
     }

@@ -25,16 +25,15 @@ public class Maze {
 	try {
 	    Thread.sleep(millis);
 	}
-	catch (InterruptedException e) {
-	}
+	catch (InterruptedException e) { };
     }
 
     public void clearTerminal(){
-	System.out.println(CLEAR_SCREEN+"\033[1;1H");
+	System.out.println(CLEAR_SCREEN + "\033[1;1H");
     }
 
     public Maze(String filename){
-	this(filename,false);
+	this(filename, false);
     }
 
     public Maze(String filename, boolean b){
