@@ -1,3 +1,5 @@
+import java.util.*;
+
 public interface Frontier {
 
     public void add(Location l);
