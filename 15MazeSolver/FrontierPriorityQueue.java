@@ -1,24 +1,24 @@
 import java.util.*;
 
 public class FrontierPriorityQueue implements Frontier {
-    
-    private PriorityQueue<Location> locations;
-    
-    public frontierPriorityQueue() {
-	this.locations = new PriorityQueue<Location>();
+
+    private MyHeap locations;
+
+    public FrontierPriorityQueue() {
+        locations = new MyHeap();
     }
 
     public void add(Location l) {
-	this.locations.add(l);
-	return;
+        locations.add(l);
+        return;
     }
 
     public Location next() {
-	return this.locations.remove();
+        return locations.remove();
     }
 
-    public class PriorityQueue implements Queue {
-	
+    public int size() {
+        return locations.size();
     }
 
 }

@@ -2,19 +2,19 @@ import java.util.*;
 
 public class QueueFrontier implements Frontier {
 
-    Queue<Location> locations;
+    private Queue<Location> locations;
 
     public QueueFrontier() {
-        this.locations = new LinkedList<Location>();
+        locations = new LinkedList<Location>();
     }
 
     public void add(Location l) {
-        this.locations.add(l);
+        locations.add(l);
         return;
     }
 
     public Location next() {
-        return this.locations.remove();
+        return locations.remove();
     }
 
     public int size() {
