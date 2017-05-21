@@ -24,24 +24,6 @@ public class MazeSolver {
         return;
     }
 
-    /*
-    public boolean DepthFirst(int r, int c) {
-        //System.out.println(toString(25));
-        if (r == board.getEnd().getRow() && c == board.getEnd().getCol()) return true;
-        if (board.get(r, c) == ' ') {
-            board.set(r, c, '@');
-            boolean b =
-                DepthFirst(r - 1, c) ||
-                DepthFirst(r + 1, c) ||
-                DepthFirst(r, c - 1) ||
-                DepthFirst(r, c + 1);
-            if (b) return true;
-            else board.set(r, c, '.');
-        }
-        return false;
-    }
-    */
-
     public void DepthFirst() {
         StackFrontier s = new StackFrontier();
         s.add(board.getStart());
