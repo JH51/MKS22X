@@ -25,7 +25,7 @@ public class MazeSolver {
     }
 
     public boolean DepthFirst(int r, int c) {
-        System.out.println(toString(10));
+        //System.out.println(toString(25));
         if (r == board.getEnd().getRow() && c == board.getEnd().getCol()) return true;
         if (board.get(r, c) == ' ') {
             board.set(r, c, '@');
@@ -45,7 +45,6 @@ public class MazeSolver {
         q.add(board.getStart());
         board.set(board.getStart(), '@');
         while (q.size() > 0) {
-            System.out.println(this.toString(25));
             Location l = q.next();
             if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
                 board.set(l, '@');
@@ -70,7 +69,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '.');
                 q.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
-            System.out.println(q);
+            //System.out.println(this.toString(25));
         }
         return;
     }
@@ -91,7 +90,7 @@ public class MazeSolver {
         MazeSolver m = new MazeSolver("Tests/data2.txt");
         //System.out.println(m);
         m.solve(1);
-        //System.out.println(m);
+        System.out.println(m);
     }
 
 }
