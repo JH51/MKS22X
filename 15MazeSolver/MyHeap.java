@@ -3,7 +3,7 @@ import java.util.*;
 public class MyHeap {
 
     private int minMax;
-    private ArrayList<String> a;
+    private ArrayList<Location> a;
 
     public MyHeap() {
         a = new ArrayList<Location>(0);
@@ -23,7 +23,7 @@ public class MyHeap {
         return;
     }
 
-    String remove() {
+    Location remove() {
         Location l = a.get(0);
         a.set(0, a.get(a.size() - 1));
         a.remove(a.size() - 1);
@@ -35,7 +35,7 @@ public class MyHeap {
     }
 
     Location peek() {
-        return (a.size() > 0) ? a.get(0) : "";
+        return (a.size() > 0) ? a.get(0) : null;
     }
 
     private int pushUp(int i) {
@@ -65,10 +65,8 @@ public class MyHeap {
     public String toString() {
         String s = "[";
         for (int i = 0; i < a.size(); i += 1)
-            s += a.get(i) + ", ";
+            s += "(" + a.get(i).getRow() + ", " +  a.get(i).getCol() + ")";
         return s.substring(0, s.length() - 2) + "]";
     }
-
-	//;
 
 }

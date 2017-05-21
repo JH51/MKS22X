@@ -122,8 +122,15 @@ public class Maze{
     public char get(int row, int col) {
         return maze[row][col];
     }
+    public char get(Location l) {
+        return maze[l.getRow()][l.getCol()];
+    }
     public void set(int row, int col, char c) {
         maze[row][col] = c;
+        return;
+    }
+    public void set(Location l, char c) {
+        maze[l.getRow()][l.getCol()] = c;
         return;
     }
     public static String colorize(String s){

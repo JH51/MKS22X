@@ -27,34 +27,34 @@ public class Location implements Comparable<Location>{
     }
 
     public int getRow() {
-	return this.row;
+        return this.row;
     }
 
     public int getCol() {
-	return this.col;
+        return this.col;
     }
 
     public int getDistToGoal() {
-	return this.distToGoal;
+        return this.distToGoal;
     }
 
     public int getDistToStart() {
-	return this.distToStart;
+        return this.distToStart;
     }
 
     public Location getPrevious() {
-	return this.previous;
+        return this.previous;
     }
 
     public boolean getAStar() {
-	return this.aStar;
+        return this.aStar;
     }
 
     public int compareTo(Location l) {
-	if (this.aStar && l.getAStar())
-	    return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal()));
-	else
-	    return (this.distToStart - l.getDistToStart());
+        if (this.aStar && l.getAStar())
+            return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal()));
+        else
+            return (this.distToStart - l.getDistToStart());
     }
-    
+
 }
