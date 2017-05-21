@@ -45,9 +45,9 @@ public class MazeSolver {
         q.add(board.getStart());
         board.set(board.getStart(), '@');
         while (q.size() > 0) {
-            System.out.println(this.toString(10));
+            System.out.println(this.toString(25));
             Location l = q.next();
-            if (l == board.getEnd()) {
+            if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
                 board.set(l, '@');
                 while (l.getPrevious() != board.getStart()) {
                     board.set(l.getPrevious(), '@');
@@ -70,6 +70,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '.');
                 q.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
+            System.out.println(q);
         }
         return;
     }

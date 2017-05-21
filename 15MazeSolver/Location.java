@@ -10,20 +10,20 @@ public class Location implements Comparable<Location>{
 		    int distToStart,
 		    int distToGoal,
 		    boolean aStar) {
-	this.row = row;
-	this.col = col;
-	this.previous = previous;
-	this.distToStart = distToStart;
-	this.distToGoal = distToGoal;
-	this.aStar = aStar;
+	    this.row = row;
+	    this.col = col;
+        this.previous = previous;
+        this.distToStart = distToStart;
+        this.distToGoal = distToGoal;
+        this.aStar = aStar;
     }
 
     public Location(int distToStart,
 		    int distToGoal,
 		    boolean aStar) {
-	this.distToStart = distToStart;
-	this.distToGoal = distToGoal;
-	this.aStar = aStar;
+	    this.distToStart = distToStart;
+        this.distToGoal = distToGoal;
+        this.aStar = aStar;
     }
 
     public int getRow() {
@@ -55,6 +55,10 @@ public class Location implements Comparable<Location>{
             return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal()));
         else
             return (this.distToStart - l.getDistToStart());
+    }
+
+    public String toString() {
+        return "(" + getRow() + ", " + getCol() + ")";
     }
 
 }

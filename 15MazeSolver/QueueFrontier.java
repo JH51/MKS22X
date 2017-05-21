@@ -21,4 +21,12 @@ public class QueueFrontier implements Frontier {
         return locations.size();
     }
 
+    public String toString() {
+        String s = "[";
+        Queue<Location> q = locations;
+        while (locations.size() > 0)
+            s += locations.remove() + ", ";
+        return s.substring(0, s.length() - 2) + "]";
+    }
+
 }
