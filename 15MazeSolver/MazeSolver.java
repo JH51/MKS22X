@@ -15,7 +15,7 @@ public class MazeSolver {
         int r = board.getStart().getRow(), c = board.getStart().getCol();
         switch (i) {
             case 0:
-            DepthFirst(r, c);
+            DepthFirst();
             break;
             case 1:
             BreadthFirst();
@@ -24,6 +24,7 @@ public class MazeSolver {
         return;
     }
 
+    /*
     public boolean DepthFirst(int r, int c) {
         //System.out.println(toString(25));
         if (r == board.getEnd().getRow() && c == board.getEnd().getCol()) return true;
@@ -38,6 +39,39 @@ public class MazeSolver {
             else board.set(r, c, '.');
         }
         return false;
+    }
+    */
+
+    public void DepthFirst() {
+        StackFrontier s = new StackFrontier();
+        s.add(board.getStart());
+        while (s.size() > 0) {
+            Location l = s.next();
+            if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
+                board.set(l, '@');
+                while (l.getPrevious() != board.getStart()) {
+                    board.set(l.getPrevious(), '@');
+                    l = l.getPrevious();
+                }
+            }
+            if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
+                board.set(l.getRow() - 1, l.getCol(), '.');
+                s.add(new Location(l.getRow() - 1, l.getCol(), l, 0, 0, false));
+            }
+            if (board.get(l.getRow() + 1, l.getCol()) == ' ') {
+                board.set(l.getRow() + 1, l.getCol(), '.');
+                s.add(new Location(l.getRow() + 1, l.getCol(), l, 0, 0, false));
+            }
+            if (board.get(l.getRow(), l.getCol() - 1) == ' ') {
+                board.set(l.getRow(), l.getCol() - 1, '.');
+                s.add(new Location(l.getRow(), l.getCol() - 1, l, 0, 0, false));
+            }
+            if (board.get(l.getRow(), l.getCol() + 1) == ' ') {
+                board.set(l.getRow(), l.getCol() + 1, '.');
+                s.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
+            }
+            System.out.println(this.toString(25));
+        }
     }
 
     public void BreadthFirst() {
@@ -74,6 +108,10 @@ public class MazeSolver {
         return;
     }
 
+    public void BestFirst() {
+
+    }
+
     public String toString() {
         return board.toString();
     }
@@ -89,7 +127,7 @@ public class MazeSolver {
     public static void main(String[] args) {
         MazeSolver m = new MazeSolver("Tests/data2.txt");
         //System.out.println(m);
-        m.solve(1);
+        m.solve(0);
         System.out.println(m);
     }
 

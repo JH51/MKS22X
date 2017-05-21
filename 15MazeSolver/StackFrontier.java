@@ -17,4 +17,8 @@ public class StackFrontier implements Frontier {
         return this.locations.pop();
     }
 
+    public int size() {
+        return locations.size();
+    }
+
 }
