@@ -1,9 +1,9 @@
 public class Location implements Comparable<Location>{
-    
+
     private int row, col, distToGoal, distToStart;
     private Location previous;
     private boolean aStar;
-    
+
     public Location(int row,
 		    int col,
 		    Location previous,
@@ -17,7 +17,7 @@ public class Location implements Comparable<Location>{
 	this.distToGoal = distToGoal;
 	this.aStar = aStar;
     }
-    
+
     public Location(int distToStart,
 		    int distToGoal,
 		    boolean aStar) {
@@ -56,11 +56,5 @@ public class Location implements Comparable<Location>{
 	else
 	    return (this.distToStart - l.getDistToStart());
     }
-
-    public static void main(String[] args) {
-	Location a = new Location(1, 0, true),
-	    b = new Location(1, 2, true);
-	System.out.println(a.compareTo(b));
-    }
-
+    
 }
