@@ -51,10 +51,10 @@ public class Location implements Comparable<Location>{
     }
 
     public int compareTo(Location l) {
-        if (this.aStar && l.getAStar())
-            return ((this.distToStart + this.distToGoal) - (l.getDistToStart() - l.getDistToGoal()));
+        if (this.aStar || l.getAStar())
+            return (this.distToStart + this.distToGoal) - (l.getDistToStart() + l.getDistToGoal()) * -1;
         else
-            return (this.distToStart - l.getDistToStart());
+            return (this.distToGoal - l.getDistToGoal()) * -1;
     }
 
     public String toString() {

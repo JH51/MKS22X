@@ -112,7 +112,6 @@ public class MazeSolver {
                 }
                 return;
             }
-            System.out.println(q.size());
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
                 board.set(l.getRow() - 1, l.getCol(), '.');
                 q.add(new Location(l.getRow() - 1,
@@ -149,7 +148,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    false));
             }
-            System.out.println(this.toString(250));
+            System.out.println(this.toString(25));
         }
         return;
     }
@@ -168,7 +167,6 @@ public class MazeSolver {
                 }
                 return;
             }
-            System.out.println(l);
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
                 board.set(l.getRow() - 1, l.getCol(), '.');
                 q.add(new Location(l.getRow() - 1,
@@ -205,7 +203,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    true));
             }
-            System.out.println(this.toString(500));
+            System.out.println(this.toString(25));
         }
         return;
     }
@@ -223,7 +221,7 @@ public class MazeSolver {
     }
 
     public static void main(String[] args) {
-        MazeSolver m = new MazeSolver("Tests/data2.txt");
+        MazeSolver m = new MazeSolver("Tests/data6.txt");
         //System.out.println(m);
         m.solve(2);
         System.out.println(m);

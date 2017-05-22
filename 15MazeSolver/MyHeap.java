@@ -23,7 +23,7 @@ public class MyHeap {
         else {
             a.set(0, a.remove(a.size() - 1));
             int i = 0;
-            while (i * 2 + 1 < a.size())
+            while (i * 2 + 1 < a.size() && a.get(i).compareTo(a.get(i * 2 + 1)) <= 0)
                 i = pushDown(i);
             return l;
         }
