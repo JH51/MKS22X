@@ -221,9 +221,9 @@ public class MazeSolver {
     }
 
     public static void main(String[] args) {
-        MazeSolver m = new MazeSolver("Tests/data6.txt");
+        MazeSolver m = new MazeSolver("Tests/data2.txt");
         //System.out.println(m);
-        m.solve(2);
+        m.solve(3);
         System.out.println(m);
     }
 
