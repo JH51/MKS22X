@@ -61,7 +61,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '?');
                 s.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
-            System.out.println(this.toString(25));
+            //System.out.println(this.toString(25));
         }
     }
 
@@ -97,7 +97,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '?');
                 q.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
-            System.out.println(this.toString(25));
+            //System.out.println(this.toString(25));
         }
         return;
     }
@@ -154,7 +154,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    false));
             }
-            System.out.println(this.toString(25));
+            //System.out.println(this.toString(25));
         }
         return;
     }
@@ -211,7 +211,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    true));
             }
-            System.out.println(this.toString(25));
+            //System.out.println(this.toString(25));
         }
         return;
     }
@@ -220,19 +220,16 @@ public class MazeSolver {
         return board.toString();
     }
 
+    public String toString(boolean b) {
+        return (b) ? board.colorize(this.toString()) : this.toString();
+    }
+
     public String toString(int i) {
         try {
             Thread.sleep(i);
         }
         catch(InterruptedException e) { }
         return "\033[2J" + board.toString();
-    }
-
-    public static void main(String[] args) {
-        MazeSolver m = new MazeSolver("Tests/data6.txt");
-        //System.out.println(m);
-        m.solve(3);
-        System.out.println(m);
     }
 
 }
