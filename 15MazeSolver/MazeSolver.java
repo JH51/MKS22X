@@ -36,27 +36,29 @@ public class MazeSolver {
         while (s.size() > 0) {
             Location l = s.next();
             if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
-                board.set(l, '@');
-                while (l.getPrevious() != board.getStart()) {
+                board.set(l, 'E');
+                while (l.getPrevious() != null) {
                     board.set(l.getPrevious(), '@');
                     l = l.getPrevious();
                 }
+                board.set(l, 'S');
                 return;
             }
+            board.set(l, '.');
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
-                board.set(l.getRow() - 1, l.getCol(), '.');
+                board.set(l.getRow() - 1, l.getCol(), '?');
                 s.add(new Location(l.getRow() - 1, l.getCol(), l, 0, 0, false));
             }
             if (board.get(l.getRow() + 1, l.getCol()) == ' ') {
-                board.set(l.getRow() + 1, l.getCol(), '.');
+                board.set(l.getRow() + 1, l.getCol(), '?');
                 s.add(new Location(l.getRow() + 1, l.getCol(), l, 0, 0, false));
             }
             if (board.get(l.getRow(), l.getCol() - 1) == ' ') {
-                board.set(l.getRow(), l.getCol() - 1, '.');
+                board.set(l.getRow(), l.getCol() - 1, '?');
                 s.add(new Location(l.getRow(), l.getCol() - 1, l, 0, 0, false));
             }
             if (board.get(l.getRow(), l.getCol() + 1) == ' ') {
-                board.set(l.getRow(), l.getCol() + 1, '.');
+                board.set(l.getRow(), l.getCol() + 1, '?');
                 s.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
             System.out.println(this.toString(25));
@@ -70,27 +72,29 @@ public class MazeSolver {
         while (q.size() > 0) {
             Location l = q.next();
             if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
-                board.set(l, '@');
-                while (l.getPrevious() != board.getStart()) {
+                board.set(l, 'E');
+                while (l.getPrevious() != null) {
                     board.set(l.getPrevious(), '@');
                     l = l.getPrevious();
                 }
+                board.set(l, 'S');
                 return;
             }
+            board.set(l, '.');
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
-                board.set(l.getRow() - 1, l.getCol(), '.');
+                board.set(l.getRow() - 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() - 1, l.getCol(), l, 0, 0, false));
             }
             if (board.get(l.getRow() + 1, l.getCol()) == ' ') {
-                board.set(l.getRow() + 1, l.getCol(), '.');
+                board.set(l.getRow() + 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() + 1, l.getCol(), l, 0, 0, false));
             }
             if (board.get(l.getRow(), l.getCol() - 1) == ' ') {
-                board.set(l.getRow(), l.getCol() - 1, '.');
+                board.set(l.getRow(), l.getCol() - 1, '?');
                 q.add(new Location(l.getRow(), l.getCol() - 1, l, 0, 0, false));
             }
             if (board.get(l.getRow(), l.getCol() + 1) == ' ') {
-                board.set(l.getRow(), l.getCol() + 1, '.');
+                board.set(l.getRow(), l.getCol() + 1, '?');
                 q.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
             System.out.println(this.toString(25));
@@ -105,15 +109,17 @@ public class MazeSolver {
         while (q.size() > 0) {
             Location l = q.next();
             if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
-                board.set(l, '@');
-                while (l.getPrevious() != board.getStart()) {
+                board.set(l, 'E');
+                while (l.getPrevious() != null) {
                     board.set(l.getPrevious(), '@');
                     l = l.getPrevious();
                 }
+                board.set(l, 'S');
                 return;
             }
+            board.set(l, '.');
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
-                board.set(l.getRow() - 1, l.getCol(), '.');
+                board.set(l.getRow() - 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() - 1,
                                    l.getCol(),
                                    l,
@@ -122,7 +128,7 @@ public class MazeSolver {
                                    false));
             }
             if (board.get(l.getRow() + 1, l.getCol()) == ' ') {
-                board.set(l.getRow() + 1, l.getCol(), '.');
+                board.set(l.getRow() + 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() + 1,
                                    l.getCol(),
                                    l,
@@ -131,7 +137,7 @@ public class MazeSolver {
                                    false));
             }
             if (board.get(l.getRow(), l.getCol() - 1) == ' ') {
-                board.set(l.getRow(), l.getCol() - 1, '.');
+                board.set(l.getRow(), l.getCol() - 1, '?');
                 q.add(new Location(l.getRow(),
                                    l.getCol() - 1,
                                    l,
@@ -140,7 +146,7 @@ public class MazeSolver {
                                    false));
             }
             if (board.get(l.getRow(), l.getCol() + 1) == ' ') {
-                board.set(l.getRow(), l.getCol() + 1, '.');
+                board.set(l.getRow(), l.getCol() + 1, '?');
                 q.add(new Location(l.getRow(),
                                    l.getCol() + 1,
                                    l,
@@ -160,15 +166,17 @@ public class MazeSolver {
         while (q.size() > 0) {
             Location l = q.next();
             if (l.getRow() == board.getEnd().getRow() && l.getCol() == board.getEnd().getCol()) {
-                board.set(l, '@');
-                while (l.getPrevious() != board.getStart()) {
+                board.set(l, 'E');
+                while (l.getPrevious() != null) {
                     board.set(l.getPrevious(), '@');
                     l = l.getPrevious();
                 }
+                board.set(l, 'S');
                 return;
             }
+            board.set(l, '.');
             if (board.get(l.getRow() - 1, l.getCol()) == ' ') {
-                board.set(l.getRow() - 1, l.getCol(), '.');
+                board.set(l.getRow() - 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() - 1,
                                    l.getCol(),
                                    l,
@@ -177,7 +185,7 @@ public class MazeSolver {
                                    true));
             }
             if (board.get(l.getRow() + 1, l.getCol()) == ' ') {
-                board.set(l.getRow() + 1, l.getCol(), '.');
+                board.set(l.getRow() + 1, l.getCol(), '?');
                 q.add(new Location(l.getRow() + 1,
                                    l.getCol(),
                                    l,
@@ -186,7 +194,7 @@ public class MazeSolver {
                                    true));
             }
             if (board.get(l.getRow(), l.getCol() - 1) == ' ') {
-                board.set(l.getRow(), l.getCol() - 1, '.');
+                board.set(l.getRow(), l.getCol() - 1, '?');
                 q.add(new Location(l.getRow(),
                                    l.getCol() - 1,
                                    l,
@@ -195,7 +203,7 @@ public class MazeSolver {
                                    true));
             }
             if (board.get(l.getRow(), l.getCol() + 1) == ' ') {
-                board.set(l.getRow(), l.getCol() + 1, '.');
+                board.set(l.getRow(), l.getCol() + 1, '?');
                 q.add(new Location(l.getRow(),
                                    l.getCol() + 1,
                                    l,
@@ -221,7 +229,7 @@ public class MazeSolver {
     }
 
     public static void main(String[] args) {
-        MazeSolver m = new MazeSolver("Tests/data2.txt");
+        MazeSolver m = new MazeSolver("Tests/data6.txt");
         //System.out.println(m);
         m.solve(3);
         System.out.println(m);
