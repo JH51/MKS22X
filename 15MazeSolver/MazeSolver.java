@@ -1,9 +1,16 @@
 public class MazeSolver {
 
     private Maze board;
+    private boolean animate;
 
     public MazeSolver(String s) {
         board = new Maze(s);
+        animate = false;
+    }
+
+    public MazeSolver(String s, boolean b) {
+        board = new Maze(s);
+        animate = b;
     }
 
     public void solve() {
@@ -61,7 +68,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '?');
                 s.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
-            //System.out.println(this.toString(25));
+            if (animate) System.out.println(this.toString());
         }
     }
 
@@ -97,7 +104,7 @@ public class MazeSolver {
                 board.set(l.getRow(), l.getCol() + 1, '?');
                 q.add(new Location(l.getRow(), l.getCol() + 1, l, 0, 0, false));
             }
-            //System.out.println(this.toString(25));
+            if (animate) System.out.println(this.toString());
         }
         return;
     }
@@ -154,7 +161,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    false));
             }
-            //System.out.println(this.toString(25));
+            if (animate) System.out.println(this.toString());
         }
         return;
     }
@@ -211,7 +218,7 @@ public class MazeSolver {
                                    Math.abs(board.getEnd().getRow() - (l.getRow())) + Math.abs(board.getEnd().getRow() - (l.getCol() + 1)),
                                    true));
             }
-            //System.out.println(this.toString(25));
+            if (animate) System.out.println(this.toString());
         }
         return;
     }
@@ -225,11 +232,7 @@ public class MazeSolver {
     }
 
     public String toString(int i) {
-        try {
-            Thread.sleep(i);
-        }
-        catch(InterruptedException e) { }
-        return "\033[2J" + board.toString();
+        return board.toString(i);
     }
 
 }
